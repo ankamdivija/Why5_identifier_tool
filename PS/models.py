@@ -1,0 +1,46 @@
+from django.db import models
+from accounts.models import UserDetail
+
+# Create your models here.
+class ProblemStatement(models.Model):
+    CATEGORIES = (
+        ('Dev','Development'),
+        ('UI','User Interface'),
+        ('Dsg','Design'),
+        ('Oth','Others'),
+    )
+    STATUS_OPTIONS = (
+        ('C','Just Created'),
+        ('A','Under Analysis'),
+        ('F','Found Root'),
+        ('T','Terminated'),
+    )
+    statement = models.CharField(max_length=100,null=True)
+    category = models.CharField(max_length=20,choices = CATEGORIES)
+    description = models.CharField(max_length=200,null=True)
+    createdBy = models.ForeignKey(UserDetail,on_delete=models.CASCADE,related_name='PS_createdby')
+    assignees = models.ManyToManyField(UserDetail,related_name='PS_assignee')
+    status = models.CharField(max_length=20,choices = STATUS_OPTIONS)
+    count = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.statement
+
+
+class Answer(models.Model):
+    answer = models.CharField(max_length=100,null=True)
+    statement = models.ForeignKey(ProblemStatement,on_delete=models.CASCADE,related_name='PS')
+    givenBy = models.ManyToManyField(UserDetail,related_name='PS_givenby')
+    a_number = models.IntegerField(default=0)
+
+    def __str__(self):
+        return "%s - %s" % (self.answer, self.a_number)
+
+    
+class Root(models.Model):
+    root = models.CharField(max_length=100,null=True)
+    statement = models.ForeignKey(ProblemStatement,on_delete=models.CASCADE,related_name='rootOfPS')
+
+    def __str__(self):
+        return self.root
+
