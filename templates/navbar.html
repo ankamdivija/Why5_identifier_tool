@@ -1,0 +1,28 @@
+ {% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color : #021c35;">
+    <a class="navbar-brand" href="#">
+        <img width="45px" height="45px" src="{% static 'img/logo.png' %}">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><strong>5Why!?</strong> <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Help</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-success my-2 m-sm-1 border-white" type="submit">SignUp</button>
+            <button class="btn btn-outline-success my-2 m-sm-1 border-white" type="submit">Login</button>
+        </form>
+    </div>
+</nav>

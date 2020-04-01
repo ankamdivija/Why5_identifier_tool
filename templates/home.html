@@ -1,0 +1,73 @@
+{% load static %}
+<!doctype html>
+<html lang="">
+
+<head>
+
+    <title>5Why Identifier tool</title>
+    <!--========================================
+    Meta
+    ===========================================-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Web Application Manifest -->
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="xDocs">
+    <link rel="icon" sizes="192x192" href="{% static 'img/logo.png' %}">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+    <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="assets/img/basic/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#55acee">
+    <!-- Color the status bar on mobile devices -->
+    <meta name="theme-color" content="#55acee">
+
+    <!--========================================
+    CSS
+    ===========================================-->
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{% static 'css/home_style.css' %}" rel="stylesheet" type="text/css">
+    <!--put your custom css on the file below-->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body class="quickSectionActive">
+    <div class="bodyWrap">
+        {% include 'navbar.html' %}
+        <main class="contentArea">
+            <div class="contentAreaInner clearfix no-pad-left no-pad-right">
+                <header class="page-header text-center extra-top-pad">
+                    <h1>ARE <span>YOUR</span> LOST?</h1>
+                    <strong>Let’s community help you to fix issue<br><a href="#">ask a question now</a></strong>
+                </header>
+                <div class="empty-graphics-div text-center">
+                    <img src="{% static 'img/graphics2.png' %}" alt="">
+                </div>
+                <div class="text-center">
+                    <a href="#" class="btn btn-lg">POST PROBLEM STATEMENT</a>
+                </div>
+
+            </div>
+            <!--contenAreaInner-->
+        </main>
+
+    </div>
+</body>
+
+</html>
