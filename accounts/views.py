@@ -9,6 +9,12 @@ def home(request):
 def login(request):
     return render(request,'login.html',{})
 
+def landingpage(request):
+	if request.method == 'POST':
+		name = request.POST['userName']
+		password = request.POST['passWord']
+		
+
 def signup(request):
     return HttpResponse('Signup page')
 

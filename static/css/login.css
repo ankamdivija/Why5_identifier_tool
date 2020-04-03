@@ -28,6 +28,19 @@ body
 	text-align: center;
 }
 
+.box .down
+{
+	margin:0 0 30px;
+	padding: 0;
+	color: #fff;
+}
+
+.box .down a
+{
+	color: #03a9f4;
+	text-decoration: none;
+}
+
 .box .inputBox
 {
 	position: relative;
