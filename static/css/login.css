@@ -1,9 +1,10 @@
-body
+.loginblock
 {
 	margin: 0;
 	padding: 0;
+	height: 80%;
 	font-family: sans-serif;
-	background: url('../img/graphics.png') center top repeat-x; 
+	background: url('../img/graphics.png') center repeat-x; 
 }
 
 .box
