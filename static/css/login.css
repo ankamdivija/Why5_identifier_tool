@@ -3,7 +3,7 @@ body
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	background: url('../img/graphics.png') center repeat-x;
+	background: url('../img/graphics.png') center top repeat-x; 
 }
 
 .box
@@ -32,7 +32,9 @@ body
 {
 	margin:0 0 30px;
 	padding: 0;
+	padding-top: 10px;
 	color: #fff;
+	text-align: center;
 }
 
 .box .down a
@@ -92,4 +94,6 @@ body
 	padding: 10px 20px;
 	cursor: pointer;
 	border-radius: 5px;
+	margin-left: 35%;
 }
+
