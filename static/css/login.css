@@ -52,7 +52,7 @@
 .box .inputBox input
 {
 	width:100%;
-	padding: 10px 0;
+	padding: 10px 2px;
 	font-size: 16px;
 	color:#fff;
 	letter-spacing: 1px;
@@ -67,9 +67,9 @@
 {
 	position: absolute;
 	top:0;
-	left: 0;
+	left: 4px;
 	letter-spacing: 1px;
-	padding: 10px 0;
+	padding: 18px 2px;
 	font-size: 16px;
 	color:#fff;
 	pointer-events: none;
