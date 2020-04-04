@@ -16,7 +16,8 @@ def landingpage(request):
 		
 
 def signup(request):
-    return HttpResponse('Signup page')
+    # return HttpResponse('Signup page')
+    return render(request,'user/signup.html',{})
 
 def logout(request):
     return HttpResponse('Logout page')
