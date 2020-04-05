@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.http import HttpResponse
+from .forms import Signup
 
 # Create your views here.
 def home(request):
@@ -14,10 +15,18 @@ def landingpage(request):
 		name = request.POST['userName']
 		password = request.POST['passWord']
 		
+def register(request):
+    form = Signup()
+    if request.method == 'POST':
+        #print('printing post req :',request.POST)
+        form = Signup(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
 
-def signup(request):
-    # return HttpResponse('Signup page')
-    return render(request,'user/signup.html',{})
+    context = {'form': form}
+
+    return render(request,'user/signup.html',context)
 
 def logout(request):
     return HttpResponse('Logout page')

@@ -1,34 +1,39 @@
 {% extends "base/base.html" %}
 
 {% block content %}
-<div class="loginblock">
-	<div class="box">
-		<h2>Sign Up</h2>
-		<form action="landingpage">
-			<div class="inputBox">
-				<input type="text" name="userName" required="">
-				<label>Username</label>
+<div class="signupblock">
+    <div class="box">
+        <h2>Sign Up</h2>
+        <form action="" method="POST"> 
+            {% csrf_token %} 
+            <div class="inputBox">
+                {{ form.username }}
+                <label>Username</label>
+            </div>  
+            <div class="inputBox">
+                {{ form.first_name}}
+                <label>First Name</label>
             </div>
             <div class="inputBox">
-				<input type="text" name="firstname" required="">
-				<label>First Name</label>
+                {{ form.last_name}}
+                <label>Last Name</label>
             </div>
             <div class="inputBox">
-				<input type="text" name="lastname" required="">
-				<label>Last Name</label>
+                {{ form.email}}
+                <label>E-mail address</label>
             </div>
             <div class="inputBox">
-				<input type="text" name="email" required="">
-				<label>E-mail address</label>
-			</div>
-			<div class="inputBox">
-				<input type="password" name="passWord" required="">
-				<label>Password</label>
-			</div>
-			<input type="submit" name="" value="Create">
-		</form>
-		<div class="down">Already have an account? <a href="login/">Login In</a></div>
-	</div>
+                {{ form.password }}
+                <label>Password</label>
+            </div>
+            <!-- <div class="inputBox">
+                {{ form.password2 }}
+                <label>Confirm Password</label>
+            </div> -->
+            <input type="submit" name="" value="Create">
+        </form>
+        <div class="down">Already have an account? <a href="login/">Login In</a></div>
+    </div>
 </div>
-	
+
 {% endblock %}
