@@ -4,32 +4,17 @@
 <div class="signupblock">
     <div class="box">
         <h2>Sign Up</h2>
-        <form action="" method="POST"> 
-            {% csrf_token %} 
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
             <div class="inputBox">
-                {{ form.username }}
-                <label>Username</label>
-            </div>  
-            <div class="inputBox">
-                {{ form.first_name}}
-                <label>First Name</label>
+                {{ field }}
+                {{ field.label_tag }}
             </div>
-            <div class="inputBox">
-                {{ form.last_name}}
-                <label>Last Name</label>
-            </div>
-            <div class="inputBox">
-                {{ form.email}}
-                <label>E-mail address</label>
-            </div>
-            <div class="inputBox">
-                {{ form.password }}
-                <label>Password</label>
-            </div>
-            <!-- <div class="inputBox">
-                {{ form.password2 }}
-                <label>Confirm Password</label>
-            </div> -->
+            {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+            {% endfor %}
+            {% endfor %}
             <input type="submit" name="" value="Create">
         </form>
         <div class="down">Already have an account? <a href="login/">Login In</a></div>

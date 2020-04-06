@@ -1,6 +1,13 @@
 from django.shortcuts import render , redirect
 from django.http import HttpResponse
-from .forms import Signup
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
+
+from .models import *
+from .forms import SignupForm
+from .models import UserDetail
+
 
 # Create your views here.
 def home(request):
@@ -8,25 +15,33 @@ def home(request):
     return render(request,'user/homepage.html',{})
 
 def login(request):
+    members = UserDetail.objects.all()
+    print(members)
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request,username=username,password=password)
+        print('user:',user)
+        if user is not None:
+            login(request,user)
+            return redirect('/')
+        else:
+            messages.error(request,'Usernname or password is incorrect')
+
     return render(request,'user/login.html',{})
 
-def landingpage(request):
-	if request.method == 'POST':
-		name = request.POST['userName']
-		password = request.POST['passWord']
-		
 def register(request):
-    form = Signup()
+    form = SignupForm(label_suffix='')
+    # form = Signup(label_suffix='')
     if request.method == 'POST':
-        #print('printing post req :',request.POST)
-        form = Signup(request.POST)
+        form = SignupForm(request.POST,label_suffix='')
         if form.is_valid():
             form.save()
             return redirect('/')
 
     context = {'form': form}
-
     return render(request,'user/signup.html',context)
 
-def logout(request):
+def logoutuser(request):
     return HttpResponse('Logout page')
