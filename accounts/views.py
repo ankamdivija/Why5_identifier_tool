@@ -14,17 +14,17 @@ def home(request):
     # return HttpResponse('Home page')
     return render(request,'user/homepage.html',{})
 
-def login(request):
+def Login(request):
     members = UserDetail.objects.all()
     print(members)
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(request,username=username,password=password)
+        print(request.POST)
+        username = request.POST.get('userName')
+        password = request.POST.get('passWord')
+        user = authenticate(request, username=username,password=password)
         print('user:',user)
         if user is not None:
-            login(request,user)
+            login(request, user)
             return redirect('/')
         else:
             messages.error(request,'Usernname or password is incorrect')
