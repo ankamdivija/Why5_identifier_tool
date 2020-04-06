@@ -14,12 +14,12 @@ def home(request):
     # return HttpResponse('Home page')
     return render(request,'user/homepage.html',{})
 
-def login(request):
+def loginuser(request):
     members = UserDetail.objects.all()
     print(members)
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = request.POST.get('userName')
+        password = request.POST.get('passWord')
 
         user = authenticate(request,username=username,password=password)
         print('user:',user)
@@ -37,7 +37,8 @@ def register(request):
     if request.method == 'POST':
         form = SignupForm(request.POST,label_suffix='')
         if form.is_valid():
-            form.save()
+            u = form.save()
+            u.active = True
             return redirect('/')
 
     context = {'form': form}
