@@ -1,10 +1,14 @@
-{% extends "base/home.html" %}
+{% extends "base/base.html" %}
 
 {% block content %}
-<div class="loginblock">
+<div class="signupblock">
 	<div class="box">
 		<h2>Login</h2>
-		<form action="landingpage">
+		<form action="" method="POST">
+			{% csrf_token %}
+			{% for message in messages %}
+			<p style="text-align: center;">{{ message }}</p>
+			{% endfor %}
 			<div class="inputBox">
 				<input type="text" name="userName" required="">
 				<label>Username</label>
@@ -15,7 +19,7 @@
 			</div>
 			<input type="submit" name="" value="Submit">
 		</form>
-		<div class="down">Don't have an account? <a href="#">Create one</a></div>
+		<div class="down">Don't have an account? <a href="{% url 'signup' %}">Create one</a></div>
 	</div>
 </div>
 	
