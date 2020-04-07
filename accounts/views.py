@@ -14,19 +14,19 @@ def home(request):
     # return HttpResponse('Home page')
     return render(request,'user/homepage.html',{})
 
-def login(request):
-    #members = UserDetail.objects.all()
-    #print(members)
 
+def Login(request):
+    members = UserDetail.objects.all()
+    print(members)
     if request.method == 'POST':
+        print(request.POST)
         username = request.POST.get('userName')
         password = request.POST.get('passWord')
-
-        user = authenticate(request,username=username,password=password)
+        user = authenticate(request, username=username,password=password)
         print('user:',user)
         if user is not None:
-            #login(request,user)
-            return redirect('/')
+            login(request, user)
+            return redirect('dashboard')
         else:
             messages.error(request,'Usernname or password is incorrect')
     
@@ -34,15 +34,17 @@ def login(request):
 
 def register(request):
     form = SignupForm(label_suffix='')
-    # form = Signup(label_suffix='')
     if request.method == 'POST':
         form = SignupForm(request.POST,label_suffix='')
         if form.is_valid():
             form.save()
-            return redirect('/')
+            messages.success(request,'Account created')
+            return redirect('login')
 
     context = {'form': form}
     return render(request,'user/signup.html',context)
 
-def logoutuser(request):
-    return HttpResponse('Logout page')
+def Logout(request):
+    messages.success(request,'Successful logout')
+    logout(request)
+    return redirect('login')
