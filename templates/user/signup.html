@@ -4,7 +4,7 @@
 <div class="signupblock">
     <div class="box">
         <h2>Sign Up</h2>
-        <form action="" method="POST">
+        <form action="" method="POST" autocomplete="off">
             {% csrf_token %}
             {% for field in form %}
             <div class="inputBox">
@@ -17,7 +17,7 @@
             {% endfor %}
             <input type="submit" name="" value="Create">
         </form>
-        <div class="down">Already have an account? <a href="login/">Login In</a></div>
+        <div class="down">Already have an account? <a href="http://127.0.0.1:8000/login/">Login In</a></div>
     </div>
 </div>
 

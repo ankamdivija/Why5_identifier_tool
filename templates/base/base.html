@@ -9,6 +9,63 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/home_style.css' %}">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+    var autocollapse = function (menu,maxHeight) {
+    
+    var nav = $(menu);
+    var navHeight = nav.innerHeight();
+    if (navHeight >= maxHeight) {
+        
+        $(menu + ' .dropdown').removeClass('d-none');
+        $(".navbar-nav").removeClass('w-auto').addClass("w-100");
+        
+        while (navHeight > maxHeight) {
+            //  add child to dropdown
+            var children = nav.children(menu + ' li:not(:last-child)');
+            var count = children.length;
+            $(children[count - 1]).prependTo(menu + ' .dropdown-menu');
+            navHeight = nav.innerHeight();
+        }
+        $(".navbar-nav").addClass("w-auto").removeClass('w-100');
+        
+    }
+    else {
+        
+        var collapsed = $(menu + ' .dropdown-menu').children(menu + ' li');
+      
+        if (collapsed.length===0) {
+          $(menu + ' .dropdown').addClass('d-none');
+        }
+      
+        while (navHeight < maxHeight && (nav.children(menu + ' li').length > 0) && collapsed.length > 0) {
+            //  remove child from dropdown
+            collapsed = $(menu + ' .dropdown-menu').children('li');
+            $(collapsed[0]).insertBefore(nav.children(menu + ' li:last-child'));
+            navHeight = nav.innerHeight();
+        }
+
+        if (navHeight > maxHeight) { 
+            autocollapse(menu,maxHeight);
+        }
+        
+    }
+};
+
+
+$(document).ready(function () {
+
+    // when the page loads
+    autocollapse('#nav',50); 
+    
+    // when the window is resized
+    $(window).on('resize', function () {
+        autocollapse('#nav',50); 
+    });
+
+});
+
+    </script>
 </head>
 
 <body class="block">

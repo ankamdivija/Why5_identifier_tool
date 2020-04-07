@@ -4,7 +4,7 @@
 <div class="signupblock">
 	<div class="box">
 		<h2>Login</h2>
-		<form action="" method="POST">
+		<form action="" method="POST" autocomplete="off">
 			{% csrf_token %}
 			{% for message in messages %}
 			<p style="text-align: center;">{{ message }}</p>
