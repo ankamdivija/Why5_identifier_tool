@@ -2,6 +2,25 @@ from django.db import models
 from accounts.models import UserDetail
 
 # Create your models here.
+
+class Tag(models.Model):
+    COLORS = (
+        ('bg-4f80b0','blue'),
+        ('bg-424ee8','purple'),
+        ('bg-36b7d7','sky blue'),
+        ('bg-ef429e','dark grey'),
+        ('bg-7cc576','green'),
+        ('bg-6f7e9c','grey'),
+        ('bg-f26522','orange'),
+        ('bg-a3d39c','light green'),
+        ('bg-92278f','pink'),
+    )
+    name = models.CharField(max_length=25,null= True)
+    number = models.CharField(max_length=25,null= True,choices=COLORS)
+
+    def __str__(self):
+        return self.name
+
 class ProblemStatement(models.Model):
     CATEGORIES = (
         ('Dev','Development'),
@@ -20,6 +39,7 @@ class ProblemStatement(models.Model):
     description = models.CharField(max_length=200,null=True)
     createdBy = models.ForeignKey(UserDetail,on_delete=models.CASCADE,related_name='PS_createdby')
     assignees = models.ManyToManyField(UserDetail,related_name='PS_assignee')
+    tags = models.ManyToManyField(Tag,related_name='tag')
     status = models.CharField(max_length=20,choices = STATUS_OPTIONS)
     count = models.IntegerField(default=0)
 
