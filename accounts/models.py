@@ -11,7 +11,7 @@ class UserDetail(models.Model):
     # password = models.CharField(max_length=20,null=True)
     full_name = models.CharField(max_length=200,blank=True, null=True)
     proffesion = models.CharField(max_length=200,blank=True, null=True)
-    profile_pic = models.ImageField(upload_to="users/" null=True,blank = True,default='users/user.png')
+    profile_pic = models.ImageField(upload_to="users/",null=True,blank = True,default='users/user.png')
     
     def __str__(self):
         return self.user.username
