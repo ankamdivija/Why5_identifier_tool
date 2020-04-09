@@ -80,7 +80,7 @@
 .box .inputBox input:valid ~ label
 {
 	top: -18px;
-	left:0;
+	left:0px;
 	color: #03a9f4;
 	font-size: 12px;
 }

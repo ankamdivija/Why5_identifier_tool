@@ -1,10 +1,42 @@
-{% extends "base/base.html" %}
 
+<!-- <h1>Dashboard</h1>
+<a href="{% url 'logout' %}">logout</a>
+<a href="{% url 'home' %}">home</a>
+<p>
+    {{user.username}}
+    <hr>
+    {{user.email}}
+</p> -->
 {% load static %}
-{% block content %}
- 
-<!--   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Responsive HTML5 Template">
+    <meta name="author" content="author.com">
+    <title>5Why dashboard</title>
+
+    <!-- STYLESHEET -->
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="{% static 'css/dashboard/s1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard/s1.min.css' %}">
+
+    <!-- Vendor -->
+    <link rel="stylesheet" href="{% static 'css/dashboard/b1.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard/b2.css' %}">
+    <!-- Latest compiled and minified CSS -->
+    <!-- Custom -->
+    <link rel="stylesheet" href="{% static 'css/dashboard/s2.css' %}">
+</head>
+
 <body>
     <!-- HEADER -->
     <header>
@@ -12,7 +44,7 @@
             <div class="container">
                 <div class="header__logo">
                     <h1>
-                        <img src="fonts/icons/main/Logo_Forum.svg" alt="logo">
+                        <img src="{% static 'img/logo.png' %}" alt="logo">
                     </h1>
                     <div class="header__logo-btn" data-dropdown-btn="logo">
                         5Why?!<i class="icon-Arrow_Below"></i>
@@ -20,49 +52,21 @@
                     <nav class="dropdown dropdown--design-01" data-dropdown-list="logo">
                         <ul class="dropdown__catalog">
                             <li><a href="index.html">Home Page</a></li>
-                            <li><a href="single-topic.html">Single Topic Page</a></li>
-                            <li><a href="simple-signup.html">Sign up Page</a></li>
-                            <li><a href="create-topic.html">Create Topic Page</a></li>
+                            <li><a href="simple-signup.html">Teams</a></li>
+                            <li><a href="create-topic.html">Create new post</a></li>
+
                         </ul>
                     </nav>
                 </div>
                 <div class="header__search">
                     <form action="#">
-                        <label>
+                        <label style="width:100%;">
+
                             <i class="icon-Search js-header-search-btn-open"></i>
                             <input type="search" placeholder="Search all forums" class="form-control">
                         </label>
                     </form>
-                    <div class="header__search-close js-header-search-btn-close"><i class="icon-Cancel"></i></div>
-                    <!-- <div class="header__search-btn" data-dropdown-btn="search">
-                        Topics<i class="icon-Arrow_Below"></i>
-                    </div>
-                    <div class="dropdown dropdown--design-01" data-dropdown-list="search">
-                        <ul>
-                            <li>
-                                <label>
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox" checked="checked">
-                                        <i></i>
-                                    </label>Search Titles Only
-                                </label>
 
-                            </li>
-                            <li>
-                                <label>
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox">
-                                        <i></i>
-                                    </label>Show Results as Posts
-                                </label>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-Advanced_Search"></i>Advanced Search
-                                </a>
-                            </li>
-                        </ul>
-                    </div> -->
                 </div>
                 <div class="header__menu">
                     <div class="header__menu-btn" data-dropdown-btn="menu">
@@ -72,31 +76,41 @@
                         <div>
                             <ul class="dropdown__catalog row">
                                 <!-- render problem statements based on status -->
-                                <li class="col-xs-6"><a href="#">New</a></li>
-                                <li class="col-xs-6"><a href="#">Unread</a></li>
-                                <li class="col-xs-6"><a href="#">Groups</a></li>
-                                <li class="col-xs-6"><a href="#">Users</a></li>
-                                <li class="col-xs-6"><a href="#">Tags</a></li>
-                                <li class="col-xs-6"><a href="#">Shortcuts</a></li>
+
+                                <li class="col-xs-4"><a href="#">New</a></li>
+                                <li class="col-xs-4"><a href="#">Unread</a></li>
+                                <li class="col-xs-4"><a href="#">Teams</a></li>
+                                <li class="col-xs-4"><a href="#">Most Liked</a></li>
+
                             </ul>
                         </div>
                         <div>
                             <h3>Categories</h3>
                             <ul class="dropdown__catalog row">
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-f9bc64"></i>Hobbies</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-348aa7"></i>Social</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-4436f8"></i>Video</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-5dd39e"></i>Random</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-ff755a"></i>Arts</a></li>
+
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-f9bc64"></i>Client issues</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-348aa7"></i>Social</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-4436f8"></i>Development</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-5dd39e"></i>User Interface</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-ff755a"></i>Design</a></li>
                                 <li class="col-xs-6"><a href="#" class="category"><i class="bg-bce784"></i>Tech</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-83253f"></i>Gaming</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-c49bbb"></i>Science</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-3ebafa"></i>Exchange</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-c6b38e"></i>Pets</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-a7cdbd"></i>Entertainment</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-525252"></i>Education</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-777da7"></i>Q&amp;As</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-368f8b"></i>Politics</a></li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-83253f"></i>Gaming</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-c49bbb"></i>Science</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i
+                                            class="bg-a7cdbd"></i>Entertainment</a></li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-525252"></i>Education</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-368f8b"></i>Politics</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-3ebafa"></i>Others</a>
+                                </li>
+
                             </ul>
                         </div>
                     </nav>
@@ -112,50 +126,30 @@
                                 <i class="icon-Favorite_Topic"></i>
                                 <p>Roswell . 16 feb, 17<span>Which movie have you watched recently?</span></p>
                             </a>
-                            <!-- <a href="#">
-                                <i class="icon-Reply_Empty"></i>
-                                <p>Callis . 18 feb, 17<span>I got an amzon thingie!</span></p>
-                            </a>
-                            <a href="#">
-                                <i class="icon-Badge"></i>
-                                <p>Earned Badge . 19 feb, 17<span><img src="fonts/icons/badges/Lets_talk.svg" alt="Lets Talk">Lets Talk</span></p>
-                            </a>
-                            <a href="#">
-                                <i class="icon-Badge"></i>
-                                <p>Earned Badge . 21 feb, 17<span><img src="fonts/icons/badges/Intermediate.svg" alt="Intermediate">Intermediate</span></p>
-                            </a>
-                            <a href="#">
-                                <i class="icon-Share_Topic"></i>
-                                <p>Charlie . 22 feb, 17<span>Need Video file of that cat.</span></p>
-                            </a>
-                            <a href="#">
-                                <i class="icon-Pencil"></i>
-                                <p>Greentea . 22 feb, 17<span>New Facebook like and share button.</span></p>
-                            </a>
-                            <span><a href="#">view older notifications...</a></span> -->
+
                         </div>
                     </div>
                 </div>
                 <div class="header__user">
                     <div class="header__user-btn" data-dropdown-btn="user">
-                        <img src="fonts/icons/avatars/A.svg" alt="avatar">
-                        azyrusmax<i class="icon-Arrow_Below"></i>
+
+                        <img src="{% static 'img/user.png' %}" alt="avatar">
+                        {{user.username}}<i class="icon-Arrow_Below"></i>
+
                     </div>
                     <nav class="dropdown dropdown--design-01" data-dropdown-list="user">
                         <div>
                             <ul class="dropdown__catalog">
                                 <li><a href="#">Dashboard</a></li>
                                 <li><a href="#">Notifications</a></li>
-                                <li><a href="#">logout</a></li>
+                                <li><a href="{% url 'logout' %}">logout</a></li>
+
                             </ul>
                         </div>
                     </nav>
                 </div>
             </div>
-            <!-- use this thing for adding new problem statement -->
-            <!-- <div class="header__offset-btn">
-                <a href="create-topic.html"><img src="fonts/icons/main/New_Topic.svg" alt="New Topic"></a>
-            </div> -->
+
         </div>
     </header>
 
@@ -168,21 +162,30 @@
                         <div class="btn-select" data-dropdown-btn="categories">All Categories</div>
                         <nav class="dropdown dropdown--design-01" data-dropdown-list="categories">
                             <ul class="dropdown__catalog row">
-                              <!-- render all the topic categories -->
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-f9bc64"></i>Hobbies</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-348aa7"></i>Social</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-4436f8"></i>Video</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-5dd39e"></i>Random</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-ff755a"></i>Arts</a></li>
+
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-f9bc64"></i>Client issues</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-348aa7"></i>Social</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-4436f8"></i>Development</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-5dd39e"></i>User Interface</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-ff755a"></i>Design</a></li>
                                 <li class="col-xs-6"><a href="#" class="category"><i class="bg-bce784"></i>Tech</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-83253f"></i>Gaming</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-c49bbb"></i>Science</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-3ebafa"></i>Exchange</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-c6b38e"></i>Pets</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-a7cdbd"></i>Entertainment</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-525252"></i>Education</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-777da7"></i>Q&amp;As</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-368f8b"></i>Politics</a></li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-83253f"></i>Gaming</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-c49bbb"></i>Science</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i
+                                            class="bg-a7cdbd"></i>Entertainment</a></li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-525252"></i>Education</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-368f8b"></i>Politics</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-3ebafa"></i>Others</a>
+                                </li>
+
                             </ul>
                         </nav>
                     </div>
@@ -190,20 +193,11 @@
                         <div class="btn-select" data-dropdown-btn="tags">Tags</div>
                         <div class="dropdown dropdown--design-01" data-dropdown-list="tags">
                             <div class="tags">
-                                <a href="#" class="bg-4f80b0">gaming</a>
-                                <a href="#" class="bg-424ee8">nature</a>
-                                <a href="#" class="bg-36b7d7">entertainment</a>
-                                <a href="#" class="bg-ef429e">selfie</a>
-                                <a href="#" class="bg-7cc576">camera</a>
-                                <a href="#" class="bg-3a3a17">username</a>
-                                <a href="#" class="bg-6f7e9c">funny</a>
-                                <a href="#" class="bg-f26522">photography</a>
-                                <a href="#" class="bg-a3d39c">climbing</a>
-                                <a href="#" class="bg-92278f">adventure</a>
-                                <a href="#" class="bg-8781bd">dreams</a>
-                                <a href="#" class="bg-f1ab32">life</a>
-                                <a href="#" class="bg-3b96ca">reason</a>
-                                <a href="#" class="bg-348aa7">social</a>
+
+                                {% for tag in tags %}
+                                <a href="#" class="{{ tag.number }}">{{tag.name}}</a>
+                                {% endfor %}
+
                             </div>
                         </div>
                     </div>
@@ -215,19 +209,22 @@
                             <ul class="dropdown__catalog">
                                 <li><a href="#">Latest</a></li>
                                 <li><a href="#">Unread</a></li>
-                                <li><a href="#">Rising</a></li>
+
                                 <li><a href="#">Most Liked</a></li>
-                                <li><a href="#">Follow Feed</a></li>
+
                             </ul>
                         </div>
                     </div>
                     <ul>
                         <li class="active"><a href="#">Latest</a></li>
                         <li><a href="#">Unread</a></li>
-                        <li><a href="#">Rising</a></li>
+
                         <li><a href="#">Most Liked</a></li>
-                        <li><a href="#">Follow Feed</a></li>
                     </ul>
+                    <div class="header__offset-btn">
+                        <a href="create-topic.html"><img src="{% static 'img/add-icon.png' %}" alt="New Topic"></a>
+                    </div>
+
                 </div>
             </div>
             <div class="posts">
@@ -236,7 +233,9 @@
                     <div class="posts__category">Category</div>
                     <div class="posts__users">Users</div>
                     <div class="posts__replies">Replies</div>
-                    <div class="posts__activity">Activity</div>
+
+                    <div class="posts__activity">Status</div>
+
                 </div>
                 <div class="posts__body">
                     <div class="posts__item bg-fef2e0">
@@ -244,17 +243,25 @@
                             <div class="posts__topic">
                                 <div class="posts__content">
                                     <a href="#">
-                                        <h3><i><img src="fonts/icons/main/Pinned.svg" alt="Pinned"></i>Welcome New Users! Please read this before posting!</h3>
+
+                                        <h3>Welcome New Users! Please read this before posting!</h3>
                                     </a>
-                                    <p>Congratulations, you have found the Community! Before you make a new topic or post, please read community guidelines.</p>
+                                    <p>Congratulations, you have found the Community! Before you make a new topic or
+                                        post, register yourself in the community.</p>
+
                                 </div>
                             </div>
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users js-dropdown">
                                 <div>
-                                    <a href="#" class="avatar"><img src="fonts/icons/avatars/B.svg" alt="avatar" data-dropdown-btn="user-b"></a>
-                                    <div class="posts__users-dropdown dropdown dropdown--user dropdown--reverse-y" data-dropdown-list="user-b">
+
+                                    <!-- write a for loop for every user details -->
+                                    <a href="#" class="avatar"><img src="{% static 'img/user.png' %}" alt="avatar"
+                                            data-dropdown-btn="user-b"></a>
+                                    <div class="posts__users-dropdown dropdown dropdown--user dropdown--reverse-y"
+                                        data-dropdown-list="user-b">
+
                                         <div class="dropdown__user">
                                             <a href="#" class="dropdown__user-label bg-218380">B</a>
                                             <div class="dropdown__user-nav">
@@ -266,43 +273,76 @@
                                                 <p>Last post 4 hours ago. Joined Jun 1, 16</p>
                                             </div>
                                             <div class="dropdown__user-icons">
-                                                <a href="#"><img src="fonts/icons/badges/Intermediate.svg" alt="user-icon"></a>
+
+                                                <a href="#"><img src="fonts/icons/badges/Intermediate.svg"
+                                                        alt="user-icon"></a>
                                                 <a href="#"><img src="fonts/icons/badges/Bot.svg" alt="user-icon"></a>
-                                                <a href="#"><img src="fonts/icons/badges/Animal_Lover.svg" alt="user-icon"></a>
+                                                <a href="#"><img src="fonts/icons/badges/Animal_Lover.svg"
+                                                        alt="user-icon"></a>
                                             </div>
                                             <div class="dropdown__user-statistic">
-                                                <div>Threads - <span>1184</span></div>
-                                                <div>Posts - <span>5,863</span></div>
+                                                <div>Posts - <span>1184</span></div>
+                                                <div>Answered - <span>5,863</span></div>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <a href="#" class="avatar"><img src="fonts/icons/avatars/K.svg" alt="avatar"></a>
-                                </div>
-                                <div>
-                                    <a href="#" class="avatar"><img src="fonts/icons/avatars/O.svg" alt="avatar"></a>
-                                </div>
+
                             </div>
                             <div class="posts__replies">66</div>
-                            <div class="posts__views">15.1k</div>
                             <div class="posts__activity">11d</div>
                         </div>
                     </div>
+                    {% for prblm in statements %}
+
                     <div class="posts__item">
                         <div class="posts__section-left">
                             <div class="posts__topic">
                                 <div class="posts__content">
                                     <a href="#">
+
+                                        <h3>{{prblm.statement}}</h3>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="posts__category"><a href="#" class="category"><i
+                                        class="bg-368f8b"></i>{{prblm.get_category_display}}</a></div>
+                        </div>
+                        <div class="posts__section-right">
+                            <div class="posts__users">
+                                {% for assignee in prblm.assignees.all %}
+                                <div>
+                                    <a href="#" class="avatar"><img src="{% static 'img/user.png' %}" alt="avatar"></a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="posts__replies">{{prblm.count}}</div>
+                            <div class="posts__activity">{{prblm.status}}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- <div class="posts__item">
+                        <div class="posts__section-left">
+                            <div class="posts__topic">
+                                <div class="posts__content">
+                                    <a href="#">
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                                         <h3>Current news and discussion</h3>
                                     </a>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="posts__category"><a href="#" class="category"><i class="bg-368f8b"></i>Politics</a></div>
+=======
+                            <div class="posts__category"><a href="#" class="category"><i
+                                        class="bg-368f8b"></i>Politics</a></div>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
                                 <div>
+<<<<<<< HEAD
                                     <a href="#" class="avatar"><img src="fonts/icons/avatars/A.svg" alt="avatar"></a>
                                 </div>
                                 <div>
@@ -314,6 +354,18 @@
                             </div>
                             <div class="posts__replies">31</div>
                             <div class="posts__views">14.5k</div>
+=======
+                                    <a href="#" class="avatar"><img src="{% static 'img/user.png' %}" alt="avatar"></a>
+                                </div>
+                                <div>
+                                    <a href="#" class="avatar"><img src="{% static 'img/user.png' %}" alt="avatar"></a>
+                                </div>
+                                <div>
+                                    <a href="#" class="avatar"><img src="{% static 'img/user.png' %}" alt="avatar"></a>
+                                </div>
+                            </div>
+                            <div class="posts__replies">31</div>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                             <div class="posts__activity">13d</div>
                         </div>
                     </div>
@@ -322,7 +374,12 @@
                             <div class="posts__topic">
                                 <div class="posts__content">
                                     <a href="#">
+<<<<<<< HEAD
                                         <h3>Get your username drawn by the other users of unity! or a drawing based on what you do</h3>
+=======
+                                        <h3>Get your username drawn by the other users of unity! or a drawing based on
+                                            what you do</h3>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                                     </a>
                                     <div class="posts__tags tags">
                                         <a href="#" class="bg-4f80b0">gaming</a>
@@ -331,11 +388,17 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="posts__category"><a href="#" class="category"><i class="bg-4436f8"></i>Video</a></div>
+=======
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-4436f8"></i>Video</a>
+                            </div>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
                                 <div>
+<<<<<<< HEAD
                                     <a href="#" class="avatar"><img src="fonts/icons/avatars/L.svg" alt="avatar"></a>
                                 </div>
                                 <div>
@@ -344,6 +407,15 @@
                             </div>
                             <div class="posts__replies">252</div>
                             <div class="posts__views">396</div>
+=======
+                                    <a href="#" class="avatar"><img src="{% static 'img/user.png' %}" alt="avatar"></a>
+                                </div>
+                                <div>
+                                    <a href="#" class="avatar"><img src="{% static 'img/user.png' %}" alt="avatar"></a>
+                                </div>
+                            </div>
+                            <div class="posts__replies">252</div>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                             <div class="posts__activity">13m</div>
                         </div>
                     </div>
@@ -356,11 +428,17 @@
                                     </a>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="posts__category"><a href="#" class="category"><i class="bg-3ebafa"></i> Exchange</a></div>
+=======
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-3ebafa"></i>
+                                    Exchange</a></div>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
                                 <div>
+<<<<<<< HEAD
                                     <a href="#" class="avatar"><img src="fonts/icons/avatars/E.svg" alt="avatar"></a>
                                 </div>
                                 <div>
@@ -372,6 +450,18 @@
                             </div>
                             <div class="posts__replies">207</div>
                             <div class="posts__views">7.5k</div>
+=======
+                                    <a href="#" class="avatar"><img src="img/user.png" alt="avatar"></a>
+                                </div>
+                                <div>
+                                    <a href="#" class="avatar"><img src="img/user.png" alt="avatar"></a>
+                                </div>
+                                <div>
+                                    <a href="#" class="avatar"><img src="img/user.png" alt="avatar"></a>
+                                </div>
+                            </div>
+                            <div class="posts__replies">207</div>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                             <div class="posts__activity">41m</div>
                         </div>
                     </div>
@@ -384,7 +474,12 @@
                                     </a>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="posts__category"><a href="#" class="category"><i class="bg-777da7"></i> Q&amp;As</a></div>
+=======
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-777da7"></i>
+                                    Q&amp;As</a></div>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
@@ -393,7 +488,10 @@
                                 </div>
                             </div>
                             <div class="posts__replies">2.3k</div>
+<<<<<<< HEAD
                             <div class="posts__views">2.0k</div>
+=======
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                             <div class="posts__activity">1h</div>
                         </div>
                     </div>
@@ -410,7 +508,12 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="posts__category"><a href="#" class="category"><i class="bg-c6b38e"></i> Pets</a></div>
+=======
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-c6b38e"></i> Pets</a>
+                            </div>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
@@ -425,7 +528,10 @@
                                 </div>
                             </div>
                             <div class="posts__replies">441</div>
+<<<<<<< HEAD
                             <div class="posts__views">3.1k</div>
+=======
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                             <div class="posts__activity">6h</div>
                         </div>
                     </div>
@@ -442,7 +548,12 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="posts__category"><a href="#" class="category"><i class="bg-525252"></i> Education</a></div>
+=======
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-525252"></i>
+                                    Education</a></div>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
@@ -457,7 +568,10 @@
                                 </div>
                             </div>
                             <div class="posts__replies">1.3k</div>
+<<<<<<< HEAD
                             <div class="posts__views">6.0k</div>
+=======
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                             <div class="posts__activity">7h</div>
                         </div>
                     </div>
@@ -466,6 +580,7 @@
                             <div class="posts__topic">
                                 <div class="posts__content">
                                     <a href="#">
+<<<<<<< HEAD
                                         <h3><i class="icon-Locked"></i>I got an Amazon thingie!</h3>
                                     </a>
                                 </div>
@@ -522,6 +637,8 @@
                             <div class="posts__topic">
                                 <div class="posts__content">
                                     <a href="#">
+=======
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                                         <h3>Show me your awesome photography</h3>
                                     </a>
                                     <div class="posts__tags tags">
@@ -529,7 +646,12 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="posts__category"><a href="#" class="category"><i class="bg-c49bbb"></i> Science</a></div>
+=======
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-c49bbb"></i>
+                                    Science</a></div>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users js-dropdown">
@@ -540,8 +662,15 @@
                                     <a href="#" class="avatar"><img src="fonts/icons/avatars/R.svg" alt="avatar"></a>
                                 </div>
                                 <div>
+<<<<<<< HEAD
                                     <a href="#" class="avatar"><img src="fonts/icons/avatars/T.svg" alt="avatar" data-dropdown-btn="user-t"></a>
                                     <div class="posts__users-dropdown dropdown dropdown--user dropdown--open" data-dropdown-list="user-t">
+=======
+                                    <a href="#" class="avatar"><img src="fonts/icons/avatars/T.svg" alt="avatar"
+                                            data-dropdown-btn="user-t"></a>
+                                    <div class="posts__users-dropdown dropdown dropdown--user dropdown--open"
+                                        data-dropdown-list="user-t">
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                                         <div class="dropdown__user">
                                             <a href="#" class="dropdown__user-label bg-00bd9d">T</a>
                                             <div class="dropdown__user-nav">
@@ -553,9 +682,17 @@
                                                 <p>Last post 4 hours ago. Joined Jun 1, 16</p>
                                             </div>
                                             <div class="dropdown__user-icons">
+<<<<<<< HEAD
                                                 <a href="#"><img src="fonts/icons/badges/Intermediate.svg" alt="user-icon"></a>
                                                 <a href="#"><img src="fonts/icons/badges/Bot.svg" alt="user-icon"></a>
                                                 <a href="#"><img src="fonts/icons/badges/Animal_Lover.svg" alt="user-icon"></a>
+=======
+                                                <a href="#"><img src="fonts/icons/badges/Intermediate.svg"
+                                                        alt="user-icon"></a>
+                                                <a href="#"><img src="fonts/icons/badges/Bot.svg" alt="user-icon"></a>
+                                                <a href="#"><img src="fonts/icons/badges/Animal_Lover.svg"
+                                                        alt="user-icon"></a>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                                             </div>
                                             <div class="dropdown__user-statistic">
                                                 <div>Threads - <span>1184</span></div>
@@ -566,7 +703,10 @@
                                 </div>
                             </div>
                             <div class="posts__replies">3</div>
+<<<<<<< HEAD
                             <div class="posts__views">519</div>
+=======
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                             <div class="posts__activity">2d</div>
                         </div>
                     </div>
@@ -579,7 +719,12 @@
                                     </a>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="posts__category"><a href="#" class="category"><i class="bg-5dd39e"></i> Random</a></div>
+=======
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-5dd39e"></i>
+                                    Random</a></div>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
@@ -594,7 +739,10 @@
                                 </div>
                             </div>
                             <div class="posts__replies">60</div>
+<<<<<<< HEAD
                             <div class="posts__views">891</div>
+=======
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                             <div class="posts__activity">1h</div>
                         </div>
                     </div>
@@ -603,6 +751,7 @@
                             <div class="posts__topic">
                                 <div class="posts__content">
                                     <a href="#">
+<<<<<<< HEAD
                                         <h3>Take a virtual tour of the world’s creepiest basement!</h3>
                                     </a>
                                 </div>
@@ -714,11 +863,18 @@
                             <div class="posts__topic">
                                 <div class="posts__content">
                                     <a href="#">
+=======
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                                         <h3>Tell me about your recent dream</h3>
                                     </a>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="posts__category"><a href="#" class="category"><i class="bg-f9bc64"></i> Hobbies</a></div>
+=======
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-f9bc64"></i>
+                                    Hobbies</a></div>
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
@@ -730,10 +886,16 @@
                                 </div>
                             </div>
                             <div class="posts__replies">0</div>
+<<<<<<< HEAD
                             <div class="posts__views">2.9k</div>
                             <div class="posts__activity">1d</div>
                         </div>
                     </div>
+=======
+                            <div class="posts__activity">1d</div>
+                        </div>
+                    </div> -->
+>>>>>>> 78fb028fbe0ef2ad7383ff97698c6d0c0dcb1e73
                     <div class="posts__item bg-f2f4f6">
                         <div class="posts__section-left">
                             <div class="posts__topic">
@@ -749,7 +911,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="posts__category"><a href="#" class="category"><i class="bg-348aa7"></i> Social</a></div>
+
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-348aa7"></i>
+                                    Social</a></div>
+
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
@@ -764,38 +929,11 @@
                                 </div>
                             </div>
                             <div class="posts__replies">129</div>
-                            <div class="posts__views">752</div>
+
                             <div class="posts__activity">19m</div>
                         </div>
                     </div>
-                    <div class="posts__item">
-                        <div class="posts__section-left">
-                            <div class="posts__topic">
-                                <div class="posts__content">
-                                    <a href="#">
-                                        <h3>What’s everyone drinking?</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="posts__category"><a href="#" class="category"><i class="bg-5dd39e"></i> Random</a></div>
-                        </div>
-                        <div class="posts__section-right">
-                            <div class="posts__users">
-                                <div>
-                                    <a href="#" class="avatar"><img src="fonts/icons/avatars/B.svg" alt="avatar"></a>
-                                </div>
-                                <div>
-                                    <a href="#" class="avatar"><img src="fonts/icons/avatars/M.svg" alt="avatar"></a>
-                                </div>
-                                <div>
-                                    <a href="#" class="avatar"><img src="fonts/icons/avatars/Z.svg" alt="avatar"></a>
-                                </div>
-                            </div>
-                            <div class="posts__replies">305</div>
-                            <div class="posts__views">2.1k</div>
-                            <div class="posts__activity">6m</div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -807,7 +945,8 @@
             <div class="container">
                 <div class="footer__logo">
                     <div>
-                        <img src="fonts/icons/main/Logo_Forum.svg" alt="logo">Unity
+                        <img src="{% static 'img/logo.png' %}" alt="logo">5Why?!
+
                     </div>
                 </div>
                 <div class="footer__nav">
@@ -820,35 +959,16 @@
                             <li><a href="#">The Team</a></li>
                         </ul>
                         <div class="footer__language">
-                            <div class="footer__language-btn" data-dropdown-btn="language">Americas - English<i class="icon-Arrow_Below"></i></div>
-                            <div class="footer__language-dropdown dropdown dropdown--design-01 dropdown--reverse-y" data-dropdown-list="language">
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <h3>Region</h3>
-                                        <ul class="dropdown__catalog">
-                                            <li class="active"><a href="#"><i></i>America</a></li>
-                                            <li><a href="#"><i></i>Europe</a></li>
-                                            <li><a href="#"><i></i>Asia</a></li>
-                                            <li><a href="#"><i></i>China</a></li>
-                                            <li><a href="#"><i></i>Australia</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <h3>Language</h3>
-                                        <ul class="dropdown__catalog">
-                                            <li class="active"><a href="#"><i></i>English</a></li>
-                                            <li><a href="#"><i></i>Espanol</a></li>
-                                            <li><a href="#"><i></i>Portugues</a></li>
-                                            <li><a href="#"><i></i>Chinese</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <div class="footer__language-btn" data-dropdown-btn="language">English</div>
+
                         </div>
                     </div>
                     <div class="footer__bline">
                         <ul class="footer__menu">
-                            <li class="footer__copyright"><span>&copy; 2017 azyrusthemes.com</span></li>
+
+                            <li class="footer__copyright"><span>&copy; 2017 5Why.com</span></li>
+
                             <li><a href="#">Teams</a></li>
                             <li><a href="#">Privacy</a></li>
                             <li><a href="#">Send Feedback</a></li>
@@ -861,7 +981,9 @@
                             <li><a href="#"><i class="fa fa-cloud" aria-hidden="true"></i></a></li>
                             <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
                         </ul>
-                        <div class="footer__language-btn-m" data-dropdown-btn="language">Americas - English<i class="icon-Arrow_Below"></i></div>
+
+                        <div class="footer__language-btn-m" data-dropdown-btn="language">English</i></div>
+
                     </div>
                 </div>
             </div>
@@ -869,10 +991,12 @@
     </footer>
 
     <!-- JAVA SCRIPT -->
-    <!-- <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/velocity/velocity.min.js"></script> -->
-    <script src="j1.js"></script>
+
+    <script src="{% static 'js/dashboard/jquery.min.js' %}"></script>
+    <script src="{% static 'js/dashboard/velocity.js' %}"></script>
+    <script src="{% static 'js/dashboard/j1.js' %}"></script>
 
 </body>
+
 </html>
-{% endblock %}
+
