@@ -16,8 +16,8 @@ def home(request):
 
 
 def Login(request):
-    members = UserDetail.objects.all()
-    print(members)
+    #members = UserDetail.objects.all()
+    #print(members)
     if request.method == 'POST':
         print(request.POST)
         username = request.POST.get('userName')
