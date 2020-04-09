@@ -217,21 +217,21 @@
                 </div>
                 <div class="posts__body">
                     <div class="posts__item bg-fef2e0">
-                        <div class="posts__section-left">
+                        <!-- <div class="posts__section-left"> -->
                             <div class="posts__topic">
                                 <div class="posts__content">
                                     <a href="#">
-                                        <h3>Welcome New Users! Please read this before posting!</h3>
+                                        <h3><i><img src="{% static 'img/pinned.png' %}"></i>Welcome New Users! Please read this before posting!</h3>
                                     </a>
                                     <p>Congratulations, you have found the Community! Before you make a new topic or
                                         post, register yourself in the community.</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="posts__section-right">
+                        <!-- </div> -->
+                        <!-- <div class="posts__section-right">
                             <div class="posts__users js-dropdown">
                                 <div>
-                                    <!-- write a for loop for every user details -->
+                                     write a for loop for every user details 
                                     <a href="#" class="avatar"><img src="{% static 'img/user.png' %}" alt="avatar"
                                             data-dropdown-btn="user-b"></a>
                                     <div class="posts__users-dropdown dropdown dropdown--user dropdown--reverse-y"
@@ -263,7 +263,7 @@
                             </div>
                             <div class="posts__replies">66</div>
                             <div class="posts__activity">11d</div>
-                        </div>
+                        </div> -->
                     </div>
                     {% for prblm in statements %}
                     <div class="posts__item">
