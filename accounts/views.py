@@ -12,7 +12,7 @@ from .decorators import unauthenticated_user
 # Create your views here.
 def home(request):
     if request.user.is_authenticated:
-        return redirect('dashboard')
+        return redirect('public_dashboard')
     else :
         return render(request,'user/homepage.html',{})
 
@@ -27,7 +27,7 @@ def Login(request):
         user = authenticate(request, username=username,password=password)
         if user is not None:
             login(request, user)
-            return redirect('dashboard')
+            return redirect('public_dashboard')
         else:
             messages.error(request,'Usernname or password is incorrect')
 

@@ -1062,10 +1062,15 @@ select {
     min-width: 79.37%;
   }
 }
+
 @media only screen and (min-width: 1040px) {
   .posts__category {
     width: 13%;
     min-width: 13%;
+  }
+  .posts__category_p {
+    width: 20%;
+    min-width: 20%;
   }
 }
 @media only screen and (max-width: 1039px) {
@@ -1143,6 +1148,32 @@ select {
     justify-content: flex-end;
   }
 }
+@media only screen and (min-width: 1040px) {
+  .posts__replies_p {
+    width: 15%;
+    min-width: 15%;
+  }
+}
+@media only screen and (max-width: 1039px) {
+  .posts__head .posts__replies_p {
+    margin-left: auto;
+  }
+}
+.posts__item .posts__replies_p {
+  font-weight: 600;
+}
+@media only screen and (min-width: 1040px) {
+  .posts__section-right .posts__replies_p {
+    width: 50%;
+    min-width: 50%;
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 1039px) {
+  .posts__section-right .posts__replies_p {
+    justify-content: flex-end;
+  }
+}
 /* .posts__views {
   color: #8e9091;
 }
@@ -1163,13 +1194,18 @@ select {
     min-width: 21.62%;
   }
 } */
-.posts__activity {
+.posts__activity,
+.posts__activity_p {
   color: #8e9091;
 }
 @media only screen and (min-width: 1040px) {
   .posts__activity {
     width: 8%;
     min-width: 8%;
+  }
+  .posts__activity_p {
+    width: 15%;
+    min-width: 15%;
   }
 }
 @media only screen and (max-width: 1039px) {
@@ -1198,8 +1234,32 @@ select {
 @media only screen and (min-width: 1040px) {
   .posts__replies,
   .posts__views,
-  .posts__activity {
+  .posts__activity,
+  .posts__activity_p {
     justify-content: center;
+  }
+}
+@media only screen and (max-width: 1039px) {
+  .posts__head .posts__activity_p {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 1039px) {
+  .posts__item .posts__activity_p {
+    padding-top: 4px;
+    margin-top: 4px;
+    border-top: solid 1px #e9ecee;
+  }
+}
+@media only screen and (min-width: 1040px) {
+  .posts__section-right .posts__activity_p {
+    width: 50%;
+    min-width: 50%;
+  }
+}
+@media only screen and (max-width: 1039px) {
+  .posts__section-right .posts__activity_p {
+    justify-content: flex-end;
   }
 }
 .posts__content h3 {
