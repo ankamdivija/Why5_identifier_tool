@@ -1,0 +1,191 @@
+{% extends 'app/dashboard.html' %}
+
+{% load static %}
+{% block content %}
+<main>
+    <div class="container">
+        <div class="nav">
+            <div class="nav__categories" style="right: 30px;">
+                <div class="nav__select">
+                    <a class="btn" href="{% url 'create_post' %}">Post New Problem Statement</a>
+                </div>
+            </div>
+            <div class="nav__categories js-dropdown">
+                <div class="nav__select">
+                    <div class="btn-select" data-dropdown-btn="categories">All Categories</div>
+                    <nav class="dropdown dropdown--design-01" data-dropdown-list="categories">
+                        <ul class="dropdown__catalog row">
+                            {% for category in categories %}
+                            <li class="col-xs-6"><a href="#" class="category"><i class="{{category.color}}"></i>{{category.name}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </div>
+                <div class="nav__select">
+                    <div class="btn-select" data-dropdown-btn="tags">Tags</div>
+                    <div class="dropdown dropdown--design-01" data-dropdown-list="tags">
+                        <div class="tags">
+                            {% for tag in tags %}
+                            <a href="#" class="{{ tag.color }}">{{tag.name}}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav__menu js-dropdown">
+                <div class="nav__select">
+                    <div class="btn-select" data-dropdown-btn="menu">Latest</div>
+                    <div class="dropdown dropdown--design-01" data-dropdown-list="menu">
+                        <ul class="dropdown__catalog">
+                            <li><a href="#">Latest</a></li>
+                            <li><a href="#">Unread</a></li>
+                            <li><a href="#">Most Liked</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <ul>
+                    <li class="active"><a href="#">Latest</a></li>
+                    <li><a href="#">Unread</a></li>
+                    <li><a href="#">Most Liked</a></li>
+                </ul>
+                <!-- <div class="header__offset-btn">
+                    <a href="create-topic.html"><img src="{% static 'img/add-icon.png' %}" alt="New Topic"></a>
+                </div> -->
+            </div>
+
+        </div>
+        <div class="posts">
+            <div class="posts__head">
+                <div class="posts__topic">Problem statement</div>
+                <div class="posts__category">Category</div>
+                <div class="posts__users">Users</div>
+                <div class="posts__replies">Replies</div>
+                <div class="posts__activity">Status</div>
+            </div>
+            <div class="posts__body">
+                <div class="posts__item bg-fef2e0">
+                    <!-- <div class="posts__section-left"> -->
+                    <div class="posts__topic">
+                        <div class="posts__content">
+                            <a href="#">
+                                <h3><i><img src="{% static 'img/pinned.png' %}"></i>Welcome New Users! Please read
+                                    this before posting!</h3>
+                            </a>
+                            <p>Congratulations, you have found the Community! Before you make a new topic or
+                                post, register yourself in the community.</p>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                    <!-- <div class="posts__section-right">
+                        <div class="posts__users js-dropdown">
+                            <div>
+                                 write a for loop for every user details 
+                                <a href="#" class="avatar"><img src="{% static 'img/user.png' %}" alt="avatar"
+                                        data-dropdown-btn="user-b"></a>
+                                <div class="posts__users-dropdown dropdown dropdown--user dropdown--reverse-y"
+                                    data-dropdown-list="user-b">
+                                    <div class="dropdown__user">
+                                        <a href="#" class="dropdown__user-label bg-218380">B</a>
+                                        <div class="dropdown__user-nav">
+                                            <a href="#"><i class="icon-Add_User"></i></a>
+                                            <a href="#"><i class="icon-Message"></i></a>
+                                        </div>
+                                        <div class="dropdown__user-info">
+                                            <a href="#">Tesla Motors</a>
+                                            <p>Last post 4 hours ago. Joined Jun 1, 16</p>
+                                        </div>
+                                        <div class="dropdown__user-icons">
+                                            <a href="#"><img src="fonts/icons/badges/Intermediate.svg"
+                                                    alt="user-icon"></a>
+                                            <a href="#"><img src="fonts/icons/badges/Bot.svg" alt="user-icon"></a>
+                                            <a href="#"><img src="fonts/icons/badges/Animal_Lover.svg"
+                                                    alt="user-icon"></a>
+                                        </div>
+                                        <div class="dropdown__user-statistic">
+                                            <div>Posts - <span>1184</span></div>
+                                            <div>Answered - <span>5,863</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="posts__replies">66</div>
+                        <div class="posts__activity">11d</div>
+                    </div> -->
+                </div>
+                {% for prblm in statements %}
+                <div class="posts__item">
+                    <div class="posts__section-left">
+                        <div class="posts__topic">
+                            <div class="posts__content">
+                                <a href="#">
+                                    <h3>{{prblm.statement}}</h3>
+                                </a>
+                                <div class="posts__tags tags">
+                                    {% for tag in prblm.tags.all %}
+                                    <a href="#" class="{{ tag.color }}">{{tag.name}}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="posts__category">
+                            <a href="#" class="category"><i class="bg-368f8b"></i>
+                                {% for category in prblm.category.all %}
+                                {{category.name}}
+                                {% endfor %}
+                            </a></div>
+                    </div>
+                    <div class="posts__section-right">
+                        <div class="posts__users">
+                            {% for assignee in prblm.assignees.all %}
+                            <div>
+                                <a href="#" class="avatar"><img src="{% static 'img/user.png' %}" alt="avatar"></a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="posts__replies">{{prblm.count}}</div>
+                        <div class="posts__activity">{{prblm.get_status_display}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="posts__item bg-f2f4f6">
+                    <div class="posts__section-left">
+                        <div class="posts__topic">
+                            <div class="posts__content">
+                                <a href="#">
+                                    <h3>A thread in which you tell users to go to sleep</h3>
+                                </a>
+                                <div class="posts__tags tags">
+                                    <a href="#" class="bg-8781bd">dreams</a>
+                                    <a href="#" class="bg-f1ab32">life</a>
+                                    <a href="#" class="bg-3b96ca">reason</a>
+                                    <a href="#" class="bg-348aa7">social</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="posts__category"><a href="#" class="category"><i class="bg-348aa7"></i>
+                                Social</a></div>
+                    </div>
+                    <div class="posts__section-right">
+                        <div class="posts__users">
+                            <div>
+                                <a href="#" class="avatar"><img src="fonts/icons/avatars/J.svg" alt="avatar"></a>
+                            </div>
+                            <div>
+                                <a href="#" class="avatar"><img src="fonts/icons/avatars/D.svg" alt="avatar"></a>
+                            </div>
+                            <div>
+                                <a href="#" class="avatar"><img src="fonts/icons/avatars/Q.svg" alt="avatar"></a>
+                            </div>
+                        </div>
+                        <div class="posts__replies">129</div>
+                        <div class="posts__activity">19m</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -16,7 +16,26 @@ class Tag(models.Model):
         ('bg-92278f','pink'),
     )
     name = models.CharField(max_length=25,null= True)
-    number = models.CharField(max_length=25,null= True,choices=COLORS)
+    color = models.CharField(max_length=25,null= True,choices=COLORS)
+    # number = models.CharField(max_length=25,null= True,choices=COLORS)
+
+    def __str__(self):
+        return self.name
+
+class Category(models.Model):
+    COLORS = (
+        ('bg-4f80b0','blue'),
+        ('bg-424ee8','purple'),
+        ('bg-36b7d7','sky blue'),
+        ('bg-ef429e','dark grey'),
+        ('bg-7cc576','green'),
+        ('bg-6f7e9c','grey'),
+        ('bg-f26522','orange'),
+        ('bg-a3d39c','light green'),
+        ('bg-92278f','pink'),
+    )
+    name = models.CharField(max_length=25,null= True)
+    color = models.CharField(max_length=25,null= True,choices=COLORS)
 
     def __str__(self):
         return self.name
@@ -35,7 +54,8 @@ class ProblemStatement(models.Model):
         ('T','Terminated'),
     )
     statement = models.CharField(max_length=100,null=True)
-    category = models.CharField(max_length=20,choices = CATEGORIES)
+    category = models.ManyToManyField(Category,related_name='category')
+    # category = models.CharField(max_length=20,choices = CATEGORIES)
     description = models.CharField(max_length=200,null=True)
     createdBy = models.ForeignKey(UserDetail,on_delete=models.CASCADE,related_name='PS_createdby')
     assignees = models.ManyToManyField(UserDetail,related_name='PS_assignee')
