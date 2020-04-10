@@ -9,11 +9,14 @@ from .models import Tag, ProblemStatement
 def dashboard(request):
     user = request.user
     tags = Tag.objects.all()
-    statements = UserDetail.objects.get(user=user).PS_createdby.all()
-    print(statements)
-    context = {
-        'user':user,
-        'tags':tags,
-        'statements':statements,
-    }
-    return render(request,'app/dashboard.html',context)
+    #statements = UserDetail.objects.get(user=user).PS_createdby.all()
+    #print(statements)
+    #context = {
+     #   'user':user,
+      #  'tags':tags,
+       # 'statements':statements,
+    #}
+    return render(request,'app/dashboard.html',{})
+
+def create_topic(request):
+    return render(request,'app/create-topic.html',{})
