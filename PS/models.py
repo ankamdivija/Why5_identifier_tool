@@ -41,11 +41,9 @@ class Category(models.Model):
         return self.name
 
 class ProblemStatement(models.Model):
-    CATEGORIES = (
-        ('Dev','Development'),
-        ('UI','User Interface'),
-        ('Dsg','Design'),
-        ('Oth','Others'),
+    VISIBLITY_CHOICES = (
+        ('E', 'Everyone'),
+        ('M', 'Only Me'),
     )
     STATUS_OPTIONS = (
         ('C','Just Created'),
@@ -55,13 +53,13 @@ class ProblemStatement(models.Model):
     )
     statement = models.CharField(max_length=100,null=True)
     category = models.ManyToManyField(Category,related_name='category')
-    # category = models.CharField(max_length=20,choices = CATEGORIES)
     description = models.CharField(max_length=200,null=True)
     createdBy = models.ForeignKey(UserDetail,on_delete=models.CASCADE,related_name='PS_createdby')
     assignees = models.ManyToManyField(UserDetail,related_name='PS_assignee')
     tags = models.ManyToManyField(Tag,related_name='tag')
     status = models.CharField(max_length=20,choices = STATUS_OPTIONS)
     count = models.IntegerField(default=0)
+    visibility = models.CharField(max_length=20,choices = VISIBLITY_CHOICES)
 
     def __str__(self):
         return self.statement
@@ -69,6 +67,7 @@ class ProblemStatement(models.Model):
 
 class Answer(models.Model):
     answer = models.CharField(max_length=100,null=True)
+    a_parent = models.ForeignKey('self',on_delete=models.CASCADE, null=True, related_name='answer_parent')
     statement = models.ForeignKey(ProblemStatement,on_delete=models.CASCADE,related_name='PS')
     givenBy = models.ManyToManyField(UserDetail,related_name='PS_givenby')
     a_number = models.IntegerField(default=0)
