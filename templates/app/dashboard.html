@@ -1,3 +1,4 @@
+
 <!-- <h1>Dashboard</h1>
 <a href="{% url 'logout' %}">logout</a>
 <a href="{% url 'home' %}">home</a>
@@ -50,19 +51,23 @@
                     </div>
                     <nav class="dropdown dropdown--design-01" data-dropdown-list="logo">
                         <ul class="dropdown__catalog">
+
                             <li><a href="{% url 'public_dashboard' %}">Home Page</a></li>
                             <li><a href="#">Teams</a></li>
-                            <li><a href="{% url 'create_post' %}">Post New Problem Statement</a></li>
+                            <li><a href="{% url 'create_topic' %}">Post New Problem Statement</a></li>
+
                         </ul>
                     </nav>
                 </div>
                 <div class="header__search">
                     <form action="#">
                         <label style="width:100%;">
+
                             <i class="icon-Search js-header-search-btn-open"></i>
                             <input type="search" placeholder="Search all forums" class="form-control">
                         </label>
                     </form>
+
                 </div>
                 <div class="header__menu">
                     <div class="header__menu-btn" data-dropdown-btn="menu">
@@ -72,19 +77,23 @@
                         <div>
                             <ul class="dropdown__catalog row">
                                 <!-- render problem statements based on status -->
+
                                 <li class="col-xs-4"><a href="#">New</a></li>
                                 <li class="col-xs-4"><a href="#">Unread</a></li>
                                 <li class="col-xs-4"><a href="#">Teams</a></li>
                                 <li class="col-xs-4"><a href="#">Most Liked</a></li>
+
                             </ul>
                         </div>
                         <div>
                             <h3>Categories</h3>
                             <ul class="dropdown__catalog row">
+
                                 {% for category in categories %}
                             <li class="col-xs-6"><a href="#" class="category"><i class="{{category.color}}"></i>{{category.name}}</a>
                             </li>
                             {% endfor %}
+
                             </ul>
                         </div>
                     </nav>
@@ -100,13 +109,16 @@
                                 <i class="icon-Favorite_Topic"></i>
                                 <p>Roswell . 16 feb, 17<span>Which movie have you watched recently?</span></p>
                             </a>
+
                         </div>
                     </div>
                 </div>
                 <div class="header__user">
                     <div class="header__user-btn" data-dropdown-btn="user">
+
                         <img src="{% static 'img/user.png' %}" alt="avatar">
                         {{user.username}}<i class="icon-Arrow_Below"></i>
+
                     </div>
                     <nav class="dropdown dropdown--design-01" data-dropdown-list="user">
                         <div>
@@ -114,16 +126,20 @@
                                 <li><a href="{% url 'private_dashboard' %}">Dashboard</a></li>
                                 <li><a href="#">Notifications</a></li>
                                 <li><a href="{% url 'logout' %}">logout</a></li>
+
                             </ul>
                         </div>
                     </nav>
                 </div>
             </div>
+
         </div>
     </header>
 
     <!-- MAIN -->
+
    {% block content %}
+
 
    {% endblock %}
 
@@ -134,6 +150,7 @@
                 <div class="footer__logo">
                     <div>
                         <img src="{% static 'img/logo.png' %}" alt="logo">5Why?!
+
                     </div>
                 </div>
                 <div class="footer__nav">
@@ -146,12 +163,16 @@
                             <li><a href="#">The Team</a></li>
                         </ul>
                         <div class="footer__language">
+
                             <div class="footer__language-btn" data-dropdown-btn="language">English</div>
+
                         </div>
                     </div>
                     <div class="footer__bline">
                         <ul class="footer__menu">
+
                             <li class="footer__copyright"><span>&copy; 2017 5Why.com</span></li>
+
                             <li><a href="#">Teams</a></li>
                             <li><a href="#">Privacy</a></li>
                             <li><a href="#">Send Feedback</a></li>
@@ -164,7 +185,9 @@
                             <li><a href="#"><i class="fa fa-cloud" aria-hidden="true"></i></a></li>
                             <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
                         </ul>
+
                         <div class="footer__language-btn-m" data-dropdown-btn="language">English</i></div>
+
                     </div>
                 </div>
             </div>
@@ -172,6 +195,7 @@
     </footer>
 
     <!-- JAVA SCRIPT -->
+
     <script src="{% static 'js/dashboard/jquery.min.js' %}"></script>
     <script src="{% static 'js/dashboard/velocity.js' %}"></script>
     <script src="{% static 'js/dashboard/j1.js' %}"></script>
@@ -179,3 +203,4 @@
 </body>
 
 </html>
+

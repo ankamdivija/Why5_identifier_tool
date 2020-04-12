@@ -16,10 +16,11 @@ def home(request):
     else :
         return render(request,'user/homepage.html',{})
 
+
 @unauthenticated_user
 def Login(request):
-    members = UserDetail.objects.all()
-    print(members)
+    #members = UserDetail.objects.all()
+    #print(members)
     if request.method == 'POST':
         print(request.POST)
         username = request.POST.get('userName')
@@ -30,7 +31,7 @@ def Login(request):
             return redirect('public_dashboard')
         else:
             messages.error(request,'Usernname or password is incorrect')
-
+    
     return render(request,'user/login.html',{})
 
 @unauthenticated_user
