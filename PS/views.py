@@ -9,23 +9,23 @@ from .models import Tag, Category, ProblemStatement
 def public_dashboard(request):
     user = request.user
     tags = Tag.objects.all()
-    statements = UserDetail.objects.get(user=user).PS_createdby.all()
-    print(statements)
-    context = {
-        'user':user,
-        'tags':tags,
-        'statements':statements,
-    }
-    return render(request,'app/public_dashboard.html',context)
+    #statements = UserDetail.objects.get(user=user).PS_createdby.all()
+    #print(statements)
+    #context = {
+     #   'user':user,
+      #  'tags':tags,
+       # 'statements':statements,
+   # }'''
+    return render(request,'app/public_dashboard.html',{})
 
 
-@login_required(login_url = 'login')
+'''@login_required(login_url = 'login')
 def create_post(request):
     user = request.user
     context = {
         'user':user,
     }
-    return render(request,'app/create.html',context)
+    return render(request,'app/create.html',context)'''
 
 
 @login_required(login_url = 'login')
@@ -43,5 +43,10 @@ def private_dashboard(request):
     }
     return render(request,'app/private_dashboard.html',context)
 
+@login_required(login_url = 'login')
 def create_topic(request):
-    return render(request,'app/create-topic.html',{})
+    user = request.user
+    context = {
+        'user' : user,
+    }
+    return render(request,'app/create-topic.html',context)
