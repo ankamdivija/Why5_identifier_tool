@@ -67,7 +67,7 @@ class ProblemStatement(models.Model):
 
 class Answer(models.Model):
     answer = models.CharField(max_length=100,null=True)
-    a_parent = models.ForeignKey('self',on_delete=models.CASCADE, null=True, related_name='answer_parent')
+    a_parent = models.ForeignKey('self',on_delete=models.CASCADE, null=True,blank=True, related_name='answer_parent')
     statement = models.ForeignKey(ProblemStatement,on_delete=models.CASCADE,related_name='PS')
     givenBy = models.ManyToManyField(UserDetail,related_name='PS_givenby')
     a_number = models.IntegerField(default=0)
