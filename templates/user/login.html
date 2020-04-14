@@ -7,7 +7,7 @@
 		<form action="" method="POST" autocomplete="off">
 			{% csrf_token %}
 			{% for message in messages %}
-			<p style="text-align: center;">{{ message }}</p>
+			<p style="text-align: center;color: red">{{ message }}</p>
 			{% endfor %}
 			<div class="inputBox">
 				<input type="text" name="userName" required="">
