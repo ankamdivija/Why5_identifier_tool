@@ -13,6 +13,17 @@
                 </div>
                 <a href="#" class="create__btn-cansel btn">About PS</a>
             </div>
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p style='color:red'>{{field.label}}: {{ error|escape }}</p>
+                        <br>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    {{ error|escape }}
+                {% endfor %}
+            {% endif %}
             <form action="" method="POST">
             {% csrf_token %}
             <div class="create__section">

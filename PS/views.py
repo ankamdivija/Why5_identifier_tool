@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -65,24 +65,20 @@ def response(request, id, a_id=1):
 def add_answer(request,id):
     user = UserDetail.objects.get(user=request.user)
     statement = ProblemStatement.objects.get(id=id)
-    form = AddResponseForm(initial={
+    form = AddResponseForm()
+    if request.method == 'POST':
+        #print(request.POST)
+        form = AddResponseForm({
+            'csrfmiddlewaretoken': request.POST['csrfmiddlewaretoken'],
+            'answer': request.POST['answer'],
             'statement':statement,
             'givenBy': [user],
             'a_parent': None,
-            'a_number': 1
+            'a_number': 6
         })
-    if request.method == 'POST':
-        print('hello')
-        form = AddResponseForm(request.POST)
-        print(form.instance)
-        # form.statement = statement
-        # form.givenBy = [user]
-        # form.a_parent = None
-        # form.a_number = 1
         if form.is_valid():
-            print('hi')
             form.save()
-            return redirect('response')
+            return redirect('../../response/'+id+'/1')
     context = {
         'form' : form,
         'user' : user,
