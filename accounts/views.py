@@ -19,8 +19,6 @@ def home(request):
 
 @unauthenticated_user
 def Login(request):
-    #members = UserDetail.objects.all()
-    #print(members)
     if request.method == 'POST':
         print(request.POST)
         username = request.POST.get('userName')
@@ -39,10 +37,10 @@ def register(request):
     form = SignupForm(label_suffix='')
     if request.method == 'POST':
         form = SignupForm(request.POST,label_suffix='')
-    if form.is_valid():
-        form.save()
-        messages.success(request,'Account created')
-        return redirect('login')
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Account created')
+            return redirect('login')
     context = {'form': form}
     return render(request,'user/signup.html',context)
     

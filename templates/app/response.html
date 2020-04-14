@@ -7,7 +7,9 @@
     <div class="container">
         <div class="create">
             <div class="create__head">
-                <div class="create__title">PS : {{ statement }}</div>
+                <div class="create__title ">
+                    PS : {{ statement.statement }}</br>
+                Description : "{{statement.description}}"</div>
             </div>
             <div class="d-flex flex-wrap ">
                 {% for ans in answers %}
@@ -22,7 +24,7 @@
             </div>
             {% endif %}
             <div class="create__footer justify-content-end">
-                <a href="#" class="create__btn-create btn btn--type-02 shadow-sm ">Add new opinion</a>
+                <a href="{% url 'add_answer' statement.id %}" class="create__btn-create btn btn--type-02 shadow-sm ">Add new opinion</a>
             </div>
         </div>
         {% if answers.count != 0 %}
@@ -35,7 +37,8 @@
                     </a>
                 </li>
                 {% for ans in answers %}
-                <li class="page-item {% if ans.a_number == 1 %}active {% endif %}"><a class="page-link" href="#">{{ans.a_number}}</a></li>
+                <li class="page-item {% if ans.a_number == 1 %}active {% endif %}">
+                    <a class="page-link" href="{% url 'response' statement.id ans.a_number %}">{{ans.a_number}}</a></li>
                 {% endfor %}
                 <li class="page-item">
                     <a class="page-link" href="#" aria-label="Next">

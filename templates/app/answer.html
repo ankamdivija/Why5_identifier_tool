@@ -2,16 +2,11 @@
 
 {% block answers %}
 <div class="create" style="margin: 0px;">
-
-    <!-- <div class="shadow-sm p-3 mb-5 bg-white rounded">Small shadow</div> -->
-    <div class="shadow p-3 mb-5 bg-white rounded">Regular shadow</div>
-    <div class="shadow p-3 mb-5 bg-white rounded">Regular shadow</div>
-    <div class="shadow p-3 mb-5 bg-white rounded">Regular shadow</div>
-    <div class="shadow p-3 mb-5 bg-white rounded">Regular shadow</div>
-    <div class="shadow p-3 mb-5 bg-white rounded">Regular shadow</div>
-
+    {% for reply in replies %}
+    <div class="shadow p-3 mb-5 bg-white rounded">{{reply.answer}}</div>
+    {% endfor %}
     <div class="create__footer justify-content-center">
-        <!-- <a href="#" class="create__btn-cansel btn">Cancel</a> -->
+        <a href="#" class="create__btn-success mx-2 btn">Root achieved</a>
         <a href="#" class="create__btn-create btn btn--type-02 shadow-sm ">Add response</a>
     </div>
 </div>
