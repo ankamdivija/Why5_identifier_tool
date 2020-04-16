@@ -48,11 +48,10 @@ def response(request, id, a_id=1):
     user = request.user
     statement = ProblemStatement.objects.get(id=id)
     answers = statement.PS.filter(a_parent=None)
-    # replies = statement.PS.filter(a_parent.answer=)
-    node = answers.get(a_number=a_id)
-    print(node)
     replies = []
-    collect_answers(replies,node,statement)
+    if answers.count() != 0:
+        node = answers.get(a_number=a_id)
+        collect_answers(replies,node,statement)
     context = {
         'user' : user,
         'statement': statement,
@@ -67,18 +66,19 @@ def add_answer(request,id):
     statement = ProblemStatement.objects.get(id=id)
     form = AddResponseForm()
     if request.method == 'POST':
-        #print(request.POST)
         form = AddResponseForm({
             'csrfmiddlewaretoken': request.POST['csrfmiddlewaretoken'],
             'answer': request.POST['answer'],
             'statement':statement,
             'givenBy': [user],
             'a_parent': None,
-            'a_number': 6
+            'a_number': statement.count+1
         })
         if form.is_valid():
             form.save()
-            return redirect('../../response/'+id+'/1')
+            statement.count=statement.count+1
+            statement.save()
+            return redirect('../../response/'+id+'/'+str(statement.count))
     context = {
         'form' : form,
         'user' : user,
