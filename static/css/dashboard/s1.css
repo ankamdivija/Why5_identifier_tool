@@ -1,9 +1,7 @@
 @font-face {
   font-family: 'mainfont';
   src:
-    url('../../fonts/mainfont.ttf?f8whkn') format('truetype'),
-    url('../../fonts/mainfont.woff?f8whkn') format('woff'),
-    url('../../fonts/mainfont.svg?f8whkn#mainfont') format('svg');
+    url('../../fonts/mainfont.ttf?f8whkn') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
