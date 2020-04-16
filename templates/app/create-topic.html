@@ -1,6 +1,7 @@
 {% load static %}
 <!doctype html>
 <html lang="en-US">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="{% static 'css/dashboard/s1.min.css' %}">
 
     <!-- Vendor -->
-    <link rel="stylesheet" href="{% static 'css/dashboard/b1.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard/' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard/b2.css' %}">
 
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">-->
@@ -31,6 +32,7 @@
     <!-- Custom -->
     <link rel="stylesheet" href="{% static 'css/dashboard/s2.css' %}">
 </head>
+
 <body>
     <!-- HEADER -->
     <header>
@@ -108,20 +110,31 @@
                         <div>
                             <h3>Categories</h3>
                             <ul class="dropdown__catalog row">
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-f9bc64"></i>Hobbies</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-348aa7"></i>Social</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-4436f8"></i>Video</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-5dd39e"></i>Random</a></li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-f9bc64"></i>Hobbies</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-348aa7"></i>Social</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-4436f8"></i>Video</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-5dd39e"></i>Random</a>
+                                </li>
                                 <li class="col-xs-6"><a href="#" class="category"><i class="bg-ff755a"></i>Arts</a></li>
                                 <li class="col-xs-6"><a href="#" class="category"><i class="bg-bce784"></i>Tech</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-83253f"></i>Gaming</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-c49bbb"></i>Science</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-3ebafa"></i>Exchange</a></li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-83253f"></i>Gaming</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-c49bbb"></i>Science</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-3ebafa"></i>Exchange</a>
+                                </li>
                                 <li class="col-xs-6"><a href="#" class="category"><i class="bg-c6b38e"></i>Pets</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-a7cdbd"></i>Entertainment</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-525252"></i>Education</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-777da7"></i>Q&amp;As</a></li>
-                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-368f8b"></i>Politics</a></li>
+                                <li class="col-xs-6"><a href="#" class="category"><i
+                                            class="bg-a7cdbd"></i>Entertainment</a></li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-525252"></i>Education</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-777da7"></i>Q&amp;As</a>
+                                </li>
+                                <li class="col-xs-6"><a href="#" class="category"><i class="bg-368f8b"></i>Politics</a>
+                                </li>
                             </ul>
                         </div>
                         <div>
@@ -151,11 +164,13 @@
                             </a>
                             <a href="#">
                                 <i class="icon-Badge"></i>
-                                <p>Earned Badge . 19 feb, 17<span><img src="fonts/icons/badges/Lets_talk.svg" alt="Lets Talk">Lets Talk</span></p>
+                                <p>Earned Badge . 19 feb, 17<span><img src="fonts/icons/badges/Lets_talk.svg"
+                                            alt="Lets Talk">Lets Talk</span></p>
                             </a>
                             <a href="#">
                                 <i class="icon-Badge"></i>
-                                <p>Earned Badge . 21 feb, 17<span><img src="fonts/icons/badges/Intermediate.svg" alt="Intermediate">Intermediate</span></p>
+                                <p>Earned Badge . 21 feb, 17<span><img src="fonts/icons/badges/Intermediate.svg"
+                                            alt="Intermediate">Intermediate</span></p>
                             </a>
                             <a href="#">
                                 <i class="icon-Share_Topic"></i>
@@ -205,7 +220,8 @@
         <div class="container">
             <div class="create">
                 <div class="create__head">
-                    <div class="create__title"><img src="{% static 'img/add-icon.png' %}" alt="New topic">Create New Thread</div>
+                    <div class="create__title"><img src="{% static 'img/add-icon.png' %}" alt="New topic">Create New
+                        Thread</div>
                     <span>Forum Guidelines</span>
                 </div>
                 <div class="create__section">
@@ -228,9 +244,9 @@
                     <div class="col-md-6">
                         <div class="create__section">
                             <label class="create__label" for="sub-category">Assignees</label>
-                            
+
                             <input type="text" value="html,input,tag" data-role="tagsinput" id="assignees"></input>
-                      
+
                         </div>
                     </div>
                 </div>
@@ -256,7 +272,8 @@
                             <a href="#" class="btn">Preview</a>
                         </div>
                     </div>
-                    <textarea class="form-control" id="description">Adding amazing books to your summer reading list can be as simple as signing up for the BuzzFeed Books newsletter! You'll get a review of a new book you might love every Wednesday, plus much more twice a week: great jokes and quizzes, wonderful lists, powerful essays, all the Harry Potter and YA buzz you can handle, and of course, even more book recommendations. So make some space in your beach bag now — because you're going to have a lot to read this summer.</textarea>
+                    <textarea class="form-control"
+                        id="description">Adding amazing books to your summer reading list can be as simple as signing up for the BuzzFeed Books newsletter! You'll get a review of a new book you might love every Wednesday, plus much more twice a week: great jokes and quizzes, wonderful lists, powerful essays, all the Harry Potter and YA buzz you can handle, and of course, even more book recommendations. So make some space in your beach bag now — because you're going to have a lot to read this summer.</textarea>
                 </div>
                 <div class="create__section">
                     <label class="create__label" for="tags">Add Tags</label>
@@ -349,7 +366,7 @@
                     <div class="posts__replies">Replies</div>
                     <div class="posts__views">Status</div>
                     <div class="posts__activity">Activity</div>
-                    
+
                 </div>
                 <div class="posts__body">
                     <div class="posts__item">
@@ -361,7 +378,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="posts__category"><a href="#" class="category"><i class="bg-368f8b"></i>Politics</a></div>
+                            <div class="posts__category"><a href="#" class="category"><i
+                                        class="bg-368f8b"></i>Politics</a></div>
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
@@ -378,8 +396,8 @@
                             <div class="posts__replies">31</div>
                             <div class="posts__views">14.5k</div>
                             <div class="posts__activity">13d</div>
-                            
-                            
+
+
                         </div>
                     </div>
                     <div class="posts__item bg-f2f4f6">
@@ -387,7 +405,8 @@
                             <div class="posts__topic">
                                 <div class="posts__content">
                                     <a href="#">
-                                        <h3>Get your username drawn by the other users of unity! or a drawing based on what you do</h3>
+                                        <h3>Get your username drawn by the other users of unity! or a drawing based on
+                                            what you do</h3>
                                     </a>
                                     <div class="posts__tags tags">
                                         <a href="#" class="bg-4f80b0">gaming</a>
@@ -396,7 +415,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="posts__category"><a href="#" class="category"><i class="bg-4436f8"></i>Video</a></div>
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-4436f8"></i>Video</a>
+                            </div>
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
@@ -410,9 +430,9 @@
                             <div class="posts__replies">252</div>
                             <div class="posts__views">396</div>
                             <div class="posts__activity">13m</div>
-                            
-                            
-                            
+
+
+
                         </div>
                     </div>
                     <div class="posts__item">
@@ -424,7 +444,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="posts__category"><a href="#" class="category"><i class="bg-3ebafa"></i> Exchange</a></div>
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-3ebafa"></i>
+                                    Exchange</a></div>
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
@@ -441,8 +462,8 @@
                             <div class="posts__replies">207</div>
                             <div class="posts__views">7.5k</div>
                             <div class="posts__activity">41m</div>
-                            
-                            
+
+
                         </div>
                     </div>
                     <div class="posts__item posts__item--bg-gradient">
@@ -454,7 +475,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="posts__category"><a href="#" class="category"><i class="bg-777da7"></i> Q&amp;As</a></div>
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-777da7"></i>
+                                    Q&amp;As</a></div>
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
@@ -465,8 +487,8 @@
                             <div class="posts__replies">2.3k</div>
                             <div class="posts__views">2.0k</div>
                             <div class="posts__activity">1h</div>
-                            
-                            
+
+
                         </div>
                     </div>
                     <div class="posts__item">
@@ -482,7 +504,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="posts__category"><a href="#" class="category"><i class="bg-c6b38e"></i> Pets</a></div>
+                            <div class="posts__category"><a href="#" class="category"><i class="bg-c6b38e"></i> Pets</a>
+                            </div>
                         </div>
                         <div class="posts__section-right">
                             <div class="posts__users">
@@ -499,7 +522,7 @@
                             <div class="posts__replies">441</div>
                             <div class="posts__views">3.1k</div>
                             <div class="posts__activity">6h</div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -526,8 +549,10 @@
                             <li><a href="#">The Team</a></li>
                         </ul>
                         <div class="footer__language">
-                            <div class="footer__language-btn" data-dropdown-btn="language">Americas - English<i class="icon-Arrow_Below"></i></div>
-                            <div class="footer__language-dropdown dropdown dropdown--design-01 dropdown--reverse-y" data-dropdown-list="language">
+                            <div class="footer__language-btn" data-dropdown-btn="language">Americas - English<i
+                                    class="icon-Arrow_Below"></i></div>
+                            <div class="footer__language-dropdown dropdown dropdown--design-01 dropdown--reverse-y"
+                                data-dropdown-list="language">
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <h3>Region</h3>
@@ -567,7 +592,8 @@
                             <li><a href="#"><i class="fa fa-cloud" aria-hidden="true"></i></a></li>
                             <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
                         </ul>
-                        <div class="footer__language-btn-m" data-dropdown-btn="language">Americas - English<i class="icon-Arrow_Below"></i></div>
+                        <div class="footer__language-btn-m" data-dropdown-btn="language">Americas - English<i
+                                class="icon-Arrow_Below"></i></div>
                     </div>
                 </div>
             </div>
@@ -583,4 +609,5 @@
     <script src="{% static 'js/dashboard/bootstrap-tagsinput.js' %}"></script>
 
 </body>
+
 </html>
