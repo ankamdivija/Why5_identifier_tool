@@ -1,5 +1,7 @@
 {% extends 'app/dashboard.html' %}
 
+{% load widget_tweaks %}
+
 {% load static %}
 
 {% block content%}
@@ -33,19 +35,18 @@
                         <div class="create__section">
                             <label class="create__label" for="category">Select Category</label>
                             <label class="custom-select" style="border: none; padding: 0px;">
-                                <select id="category" name='category'>
+                                {{ form.category|add_class:"category" }}
+                                <!--<select id="category" name='category'>
                                     <option>Choose</option>
-                                    {% for c in form.category %}
-                                    <option>{{c.name}}</option>
-                                    {% endfor %}
-                                </select>
+                                    
+                                </select> -->
                             </label>
                         </div>
                     </div>
                     <div class="col-md-7">
                         <div class="create__section">
                             <label class="create__label" for="sub-category">Assignees</label>
-                            <input type="text" value="html,input,tag" data-role="tagsinput" id="assignees"></input>
+                            <input type="text" value="" data-role="tagsinput" id="assignees"></input>
     
                         </div>
                     </div>

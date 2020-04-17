@@ -11,6 +11,7 @@ class AddResponseForm(forms.ModelForm):
 
 class AddPost(forms.ModelForm):
 
+    #category = forms.ModelChoiceField(widget=forms.Select(attrs={"class": "category"}), queryset=Category.objects.all())
     class Meta:
         model = ProblemStatement
         fields = '__all__'
