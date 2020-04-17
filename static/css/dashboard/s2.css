@@ -2236,6 +2236,9 @@ select {
 .create__section {
   margin-bottom: 24px;
 }
+.create__section input {
+  width:100%;
+}
 .create__textarea-head {
   position: relative;
   border: solid 1px #e9ecee;

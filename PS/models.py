@@ -17,7 +17,6 @@ class Tag(models.Model):
     )
     name = models.CharField(max_length=25,null= True)
     color = models.CharField(max_length=25,null= True,choices=COLORS)
-    # number = models.CharField(max_length=25,null= True,choices=COLORS)
 
     def __str__(self):
         return self.name

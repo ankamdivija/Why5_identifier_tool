@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 from accounts.models import UserDetail
 from .models import Tag, Category, ProblemStatement, Answer
-from .forms import AddResponseForm
+from .forms import AddResponseForm, AddPost
 
 @login_required(login_url = 'login')
 def public_dashboard(request):
@@ -35,13 +35,21 @@ def private_dashboard(request):
     return render(request,'app/private_dashboard.html',context)
 
 @login_required(login_url = 'login')
-def create_topic(request):
+def post_ps(request):
+    user = request.user
+    form = AddPost()
+    context = {
+        'user' : user,
+        'form' : form,
+    }
+    return render(request,'app/post_ps.html',context)
+
+def add_post(request):
     user = request.user
     context = {
         'user' : user,
     }
-    return render(request,'app/create-topic.html',context)
-
+    return render(request,'app/public_dashboard.html',context)
 
 @login_required(login_url = 'login')
 def response(request, id, a_id=1):

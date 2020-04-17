@@ -1,11 +1,3 @@
-<!-- <h1>Dashboard</h1>
-<a href="{% url 'logout' %}">logout</a>
-<a href="{% url 'home' %}">home</a>
-<p>
-    {{user.username}}
-    <hr>
-    {{user.email}}
-</p> -->
 {% load static %}
 <!doctype html>
 <html lang="en-US">
@@ -31,8 +23,10 @@
     <link rel="stylesheet" href="{% static 'css/dashboard/s1.min.css' %}">
 
     <!-- Vendor -->
-    <link rel="stylesheet" href="{% static 'css/dashboard/' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard/b1.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard/b2.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/dashboard/bootstrap-tagsinput.css' %}">
     <!-- Latest compiled and minified CSS -->
     <!-- Custom -->
     <link rel="stylesheet" href="{% static 'css/dashboard/s2.css' %}">
@@ -55,7 +49,7 @@
 
                             <li><a href="{% url 'public_dashboard' %}">Home Page</a></li>
                             <li><a href="#">Teams</a></li>
-                            <li><a href="{% url 'create_topic' %}">Post New Problem Statement</a></li>
+                            <li><a href="{% url 'post_ps' %}">Post New Problem Statement</a></li>
 
                         </ul>
                     </nav>
@@ -201,6 +195,8 @@
     <script src="{% static 'js/dashboard/jquery.min.js' %}"></script>
     <script src="{% static 'js/dashboard/velocity.js' %}"></script>
     <script src="{% static 'js/dashboard/j1.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="{% static 'js/dashboard/bootstrap-tagsinput.js' %}"></script>
 
 </body>
 

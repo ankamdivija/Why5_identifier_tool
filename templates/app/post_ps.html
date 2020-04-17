@@ -1,0 +1,114 @@
+{% extends 'app/dashboard.html' %}
+
+{% load static %}
+
+{% block content%}
+
+<main>
+    <div class="container">
+        <div class="create">
+            <div class="create__head">
+                <div class="create__title"><img src="{% static 'img/add-icon.png' %}" alt="New topic">Create New
+                    Problem Statement</div>
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p style='color:red'>{{field.label}}: {{ error|escape }}</p>
+                        <br>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    {{ error|escape }}
+                {% endfor %}
+                {% endif %}
+                <div class="create__section">
+                    <label class="create__label" for="title">Problem Statement Title</label>
+                    <input type="text" class="form-control" name="statement" id="title" placeholder="Add here">
+                </div>
+                <div class="row">
+                    <div class="col-md-4" >
+                        <div class="create__section">
+                            <label class="create__label" for="category">Select Category</label>
+                            <label class="custom-select" style="border: none; padding: 0px;">
+                                <select id="category" name='category'>
+                                    <option>Choose</option>
+                                    {% for c in form.category %}
+                                    <option>{{c.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="create__section">
+                            <label class="create__label" for="sub-category">Assignees</label>
+                            <input type="text" value="html,input,tag" data-role="tagsinput" id="assignees"></input>
+    
+                        </div>
+                    </div>
+                </div>
+                <div class="create__section create__textarea">
+                    <label class="create__label" for="description">Description</label>
+                    <div class="create__textarea-head">
+                        <span><i class="icon-Quote"></i></span>
+                        <span><i class="icon-Bold"></i></span>
+                        <span><i class="icon-Italic"></i></span>
+                        <div class="create__textarea-separate"></div>
+                        <span><i class="icon-Share_Topic"></i></span>
+                        <span><i class="icon-BlockQuote"></i></span>
+                        <span><i class="icon-Performatted"></i></span>
+                        <span><i class="icon-Upload_Files"></i></span>
+                        <span class="create__textarea-separate"></span>
+                        <span><i class="icon-Bullet_List"></i></span>
+                        <span><i class="icon-heading"></i></span>
+                        <span><i class="icon-Horizontal_Line"></i></span>
+                        <span><i class="icon-Emoticon"></i></span>
+                        <span><i class="icon-Settings"></i></span>
+                        <span><i class="icon-Color_Picker"></i></span>
+                        <div class="create__textarea-btn">
+                            <a href="#" class="btn">Preview</a>
+                        </div>
+                    </div>
+                    <textarea class="form-control" name="description" id="description"
+                    placeholder="Add description here."></textarea>
+                </div>
+                <div class="create__section">
+                    <label class="create__label" for="tags">Add Tags</label>
+                    <input type="text" value="html,input,tag" data-role="tagsinput" id="tag"></input>
+                </div>
+                <div class="create__section">
+                    <label class="create__label">Who can see this?</label>
+                    <div class="create__radio">
+                        {% for key,value in form.fields.visibility.choices %}
+                        <label class="create__box">
+                            <label class="custom-radio">
+                                <input type="radio" name="visibility" checked="checked">
+                                <i></i>
+                            </label>
+                            <span>{{ value }}</span>
+                        </label>
+                        {% endfor %}
+                        <!-- <label class="create__box">
+                            <label class="custom-radio">
+                                <input type="radio" name="visibility">
+                                <i></i>
+                            </label>
+                            <span>Only Friends</span>
+                        </label> -->
+                    </div>
+                </div>
+                <div class="create__footer">
+                    <a href="{% url 'public_dashboard' %}" class="create__btn-cansel btn">Cancel</a>
+                    <input type="submit" value="Create" class="create__btn-create btn btn--type-02">
+                    <!-- <a href="{% url 'add_post' %}" class="create__btn-create btn btn--type-02">Create Thread</a> -->
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</main>
+
+{% endblock %}
