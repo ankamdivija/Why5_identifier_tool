@@ -38,6 +38,7 @@ def private_dashboard(request):
 def post_ps(request):
     user = request.user
     form = AddPost()
+    #print(form)
     context = {
         'user' : user,
         'form' : form,
