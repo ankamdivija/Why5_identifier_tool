@@ -2237,7 +2237,8 @@ select {
   margin-bottom: 24px;
 }
 .create__section input {
-  width:100%;
+  /* width:100%; */
+  margin: 5px;
 }
 .create__textarea-head {
   position: relative;

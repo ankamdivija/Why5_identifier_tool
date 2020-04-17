@@ -1,0 +1,41 @@
+{% extends 'base/dashboard.html' %}
+
+{% load static %}
+
+{% block content%}
+<main>
+    <div class="container">
+        <div class="create">
+            <div class="create__head">
+                <div class="create__title">
+                    <!-- <img src="{% static 'img/add-icon.png' %}" alt="New topic"> -->
+                    Add new response for " {{statement.statement}} "
+                </div>
+                <a href="#" class="create__btn-cansel btn">About PS</a>
+            </div>
+            <form action="" method="POST">
+            {% csrf_token %}
+            {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p style='color:red'>{{field.label}}: {{ error|escape }}</p>
+                    <br>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                {{ error|escape }}
+            {% endfor %}
+            {% endif %}
+            <div class="create__section">
+                <label class="create__label" for="title">New Response</label>
+                <textarea class="form-control" name="answer" id="answer" placeholder="Add here"></textarea>
+            </div>
+            <div class="create__footer">
+                <a href="{% url 'response' statement.id 1 %}" class="create__btn-cansel btn">Cancel</a>
+                <input type="submit" value="Add Response" class="create__btn-create btn btn--type-02">
+            </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'app/dashboard.html' %}
+{% extends 'base/dashboard.html' %}
 
 {% load widget_tweaks %}
 
@@ -36,18 +36,15 @@
                             <label class="create__label" for="category">Select Category</label>
                             <label class="custom-select" style="border: none; padding: 0px;">
                                 {{ form.category|add_class:"category" }}
-                                <!--<select id="category" name='category'>
-                                    <option>Choose</option>
-                                    
-                                </select> -->
                             </label>
                         </div>
                     </div>
                     <div class="col-md-7">
                         <div class="create__section">
                             <label class="create__label" for="sub-category">Assignees</label>
-                            <input type="text" value="" data-role="tagsinput" id="assignees"></input>
-    
+                            <!-- <input type="text" name="assignees" value="abhi" data-role="tagsinput" id="assignees"></input> -->
+                            <select multiple name="assignees" data-role="tagsinput">
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -69,42 +66,31 @@
                         <span><i class="icon-Emoticon"></i></span>
                         <span><i class="icon-Settings"></i></span>
                         <span><i class="icon-Color_Picker"></i></span>
-                        <div class="create__textarea-btn">
-                            <a href="#" class="btn">Preview</a>
-                        </div>
                     </div>
                     <textarea class="form-control" name="description" id="description"
                     placeholder="Add description here."></textarea>
                 </div>
                 <div class="create__section">
                     <label class="create__label" for="tags">Add Tags</label>
-                    <input type="text" value="html,input,tag" data-role="tagsinput" id="tag"></input>
+                    <!-- <input type="text" name="tags" value="html,input,tag" data-role="tagsinput" id="tag"></input> -->
+                    <select multiple name="tags" data-role="tagsinput">
+                    </select>
                 </div>
                 <div class="create__section">
                     <label class="create__label">Who can see this?</label>
                     <div class="create__radio">
-                        {% for key,value in form.fields.visibility.choices %}
+                        {% for radio in form.visibility %}
                         <label class="create__box">
-                            <label class="custom-radio">
-                                <input type="radio" name="visibility" checked="checked">
-                                <i></i>
-                            </label>
-                            <span>{{ value }}</span>
+                            <div >{{ radio.tag }}
+                                <label>{{ radio.choice_label }}</label>
+                            </div>
                         </label>
                         {% endfor %}
-                        <!-- <label class="create__box">
-                            <label class="custom-radio">
-                                <input type="radio" name="visibility">
-                                <i></i>
-                            </label>
-                            <span>Only Friends</span>
-                        </label> -->
                     </div>
                 </div>
                 <div class="create__footer">
                     <a href="{% url 'public_dashboard' %}" class="create__btn-cansel btn">Cancel</a>
                     <input type="submit" value="Create" class="create__btn-create btn btn--type-02">
-                    <!-- <a href="{% url 'add_post' %}" class="create__btn-create btn btn--type-02">Create Thread</a> -->
                 </div>
             </form>
             

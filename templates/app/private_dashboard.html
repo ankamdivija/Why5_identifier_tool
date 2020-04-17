@@ -1,4 +1,4 @@
-{% extends 'app/dashboard.html' %}
+{% extends 'base/dashboard.html' %}
 
 {% load static %}
 {% block content %}
@@ -7,7 +7,7 @@
         <div class="nav">
             <div class="nav__categories" style="right: 30px;">
                 <div class="nav__select">
-                    <a class="btn" href="{% url 'post_ps' %}">Post New Problem Statement</a>
+                    <a class="btn" href="{% url 'create_post' %}">Post New Problem Statement</a>
                 </div>
             </div>
             <div class="nav__categories js-dropdown">
@@ -47,16 +47,19 @@
                     <div class="posts__section-left">
                         <div class="posts__topic">
                             <div class="posts__content">
-                                <a href="#">
+                                <a href="{% url 'response' prblm.id 1 %}">
                                     <h3>{{prblm.statement}}</h3>
                                 </a>
+                                <div class="posts__tags tags">
+                                    {% for tag in prblm.tags.all %}
+                                    <a href="#" class="{{ tag.color }}">{{tag.name}}</a>
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
                         <div class="posts__category"><a href="#" class="category"><i
                             class="bg-368f8b"></i>
-                            {% for category in prblm.category.all %}
-                            {{category.name}}
-                            {% endfor %}
+                            {{prblm.category.name}}
                         </a></div>
                     </div>
                     <div class="posts__section-right">

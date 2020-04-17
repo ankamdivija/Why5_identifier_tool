@@ -68,7 +68,7 @@ class Answer(models.Model):
     answer = models.CharField(max_length=100,null=True)
     a_parent = models.ForeignKey('self',on_delete=models.CASCADE, null=True,blank=True, related_name='answer_parent')
     statement = models.ForeignKey(ProblemStatement,on_delete=models.CASCADE,related_name='PS')
-    givenBy = models.ForeignKey(UserDetail,on_delete=models.CASCADE,related_name='PS_givenby')
+    givenBy = models.ForeignKey(UserDetail,on_delete=models.SET_NULL,null=True,related_name='PS_givenby')
     a_number = models.IntegerField(default=0)
 
     def __str__(self):

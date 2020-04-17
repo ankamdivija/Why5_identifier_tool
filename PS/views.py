@@ -4,14 +4,14 @@ from django.contrib.auth.decorators import login_required
 
 from accounts.models import UserDetail
 from .models import Tag, Category, ProblemStatement, Answer
-from .forms import AddResponseForm, AddPost
+from .forms import AddResponseForm, AddPostForm
 
 @login_required(login_url = 'login')
 def public_dashboard(request):
     user = request.user
     tags = Tag.objects.all()
     categories = Category.objects.all()
-    statements = ProblemStatement.objects.all()
+    statements = ProblemStatement.objects.filter(visibility='E')
     context = {
        'user':user,
        'tags':tags,
@@ -35,22 +35,32 @@ def private_dashboard(request):
     return render(request,'app/private_dashboard.html',context)
 
 @login_required(login_url = 'login')
-def post_ps(request):
-    user = request.user
-    form = AddPost()
-    #print(form)
+def create_post(request):
+    user = UserDetail.objects.get(user=request.user)
+    form = AddPostForm()
+    if request.method=='POST':
+        form = AddPostForm({
+            'csrfmiddlewaretoken': request.POST['csrfmiddlewaretoken'],
+            'statement': request.POST['statement'],
+            'category':Category.objects.get(id=request.POST['category']),
+            'description': request.POST['description'],
+            'createdBy': user,
+            'assignees': UserDetail.objects.all(),
+            # 'assignees': [UserDetail.objects.get(username=name) for name in request.POST.getlist('assignees')],
+            'tags':[Tag.objects.get(name=tag) for tag in request.POST.getlist('tags')],
+            'status':'C',
+            'count':0,
+            'visibility':request.POST['visibility']
+        })
+        if form.is_valid():
+            form.save()
+            return redirect('public_dashboard')
     context = {
         'user' : user,
         'form' : form,
     }
-    return render(request,'app/post_ps.html',context)
+    return render(request,'app/create_post.html',context)
 
-def add_post(request):
-    user = request.user
-    context = {
-        'user' : user,
-    }
-    return render(request,'app/public_dashboard.html',context)
 
 @login_required(login_url = 'login')
 def response(request, id, a_id=1):
@@ -67,7 +77,7 @@ def response(request, id, a_id=1):
         'answers':answers,
         'replies':replies,
     }
-    return render(request,'app/answer.html',context)
+    return render(request,'app/sub_response.html',context)
 
 @login_required(login_url = 'login')
 def add_answer(request,id):
@@ -85,6 +95,8 @@ def add_answer(request,id):
         })
         if form.is_valid():
             form.save()
+            if(statement.count+1>3):
+                statement.status = 'A'
             statement.count=statement.count+1
             statement.save()
             return redirect('../../response/'+id+'/'+str(statement.count))
@@ -93,7 +105,7 @@ def add_answer(request,id):
         'user' : user,
         'statement': statement,
     }
-    return render(request,'app/create.html',context)
+    return render(request,'app/add_response.html',context)
 
 def collect_answers(replies,node,statement):
     replies.append(node)

@@ -9,8 +9,8 @@ class AddResponseForm(forms.ModelForm):
         fields = '__all__'
 
 
-class AddPost(forms.ModelForm):
-
+class AddPostForm(forms.ModelForm):
+    visibility = forms.ChoiceField(widget=forms.RadioSelect,choices=ProblemStatement.VISIBLITY_CHOICES)
     #category = forms.ModelChoiceField(widget=forms.Select(attrs={"class": "category"}), queryset=Category.objects.all())
     class Meta:
         model = ProblemStatement

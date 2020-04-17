@@ -1,4 +1,4 @@
-{% extends 'app/dashboard.html' %}
+{% extends 'base/dashboard.html' %}
 
 {% load static %}
 {% block content %}
@@ -7,7 +7,7 @@
         <div class="nav">
             <div class="nav__categories" style="right: 30px;">
                 <div class="nav__select">
-                    <a class="btn" href="{% url 'post_ps' %}">Post New Problem Statement</a>
+                    <a class="btn" href="{% url 'create_post' %}">Post New Problem Statement</a>
                 </div>
             </div>
             <div class="nav__categories js-dropdown">
@@ -49,9 +49,6 @@
                     <li><a href="#">Unread</a></li>
                     <li><a href="#">Most Liked</a></li>
                 </ul>
-                <!-- <div class="header__offset-btn">
-                    <a href="create-topic.html"><img src="{% static 'img/add-icon.png' %}" alt="New Topic"></a>
-                </div> -->
             </div>
 
         </div>
@@ -78,7 +75,7 @@
                     </div>
                 </div>
                 {% for prblm in statements %}
-                <div class="posts__item">
+                <div class="posts__item {% if prblm.id|divisibleby:2 %}bg-f2f4f6{% endif %}">
                     <div class="posts__section-left">
                         <div class="posts__topic">
                             <div class="posts__content">
@@ -94,9 +91,7 @@
                         </div>
                         <div class="posts__category">
                             <a href="#" class="category"><i class="bg-368f8b"></i>
-                                {% for category in prblm.category.all %}
-                                {{category.name}}
-                                {% endfor %}
+                                {{prblm.category.name}}
                             </a></div>
                     </div>
                     <div class="posts__section-right">
@@ -112,41 +107,6 @@
                     </div>
                 </div>
                 {% endfor %}
-                <div class="posts__item bg-f2f4f6">
-                    <div class="posts__section-left">
-                        <div class="posts__topic">
-                            <div class="posts__content">
-                                <a href="#">
-                                    <h3>A thread in which you tell users to go to sleep</h3>
-                                </a>
-                                <div class="posts__tags tags">
-                                    <a href="#" class="bg-8781bd">dreams</a>
-                                    <a href="#" class="bg-f1ab32">life</a>
-                                    <a href="#" class="bg-3b96ca">reason</a>
-                                    <a href="#" class="bg-348aa7">social</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="posts__category"><a href="#" class="category"><i class="bg-348aa7"></i>
-                                Social</a></div>
-                    </div>
-                    <div class="posts__section-right">
-                        <div class="posts__users">
-                            <div>
-                                <a href="#" class="avatar"><img src="fonts/icons/avatars/J.svg" alt="avatar"></a>
-                            </div>
-                            <div>
-                                <a href="#" class="avatar"><img src="fonts/icons/avatars/D.svg" alt="avatar"></a>
-                            </div>
-                            <div>
-                                <a href="#" class="avatar"><img src="fonts/icons/avatars/Q.svg" alt="avatar"></a>
-                            </div>
-                        </div>
-                        <div class="posts__replies">129</div>
-                        <div class="posts__activity">19m</div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
