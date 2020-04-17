@@ -51,7 +51,7 @@ class ProblemStatement(models.Model):
         ('T','Terminated'),
     )
     statement = models.CharField(max_length=100,null=True)
-    category = models.ManyToManyField(Category,related_name='category')
+    category = models.ForeignKey(Category,on_delete=models.CASCADE,related_name='category')
     description = models.CharField(max_length=200,null=True)
     createdBy = models.ForeignKey(UserDetail,on_delete=models.CASCADE,related_name='PS_createdby')
     assignees = models.ManyToManyField(UserDetail,related_name='PS_assignee')
@@ -68,7 +68,7 @@ class Answer(models.Model):
     answer = models.CharField(max_length=100,null=True)
     a_parent = models.ForeignKey('self',on_delete=models.CASCADE, null=True,blank=True, related_name='answer_parent')
     statement = models.ForeignKey(ProblemStatement,on_delete=models.CASCADE,related_name='PS')
-    givenBy = models.ManyToManyField(UserDetail,related_name='PS_givenby')
+    givenBy = models.ForeignKey(UserDetail,on_delete=models.CASCADE,related_name='PS_givenby')
     a_number = models.IntegerField(default=0)
 
     def __str__(self):
