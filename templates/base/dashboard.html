@@ -30,6 +30,8 @@
     <!-- Latest compiled and minified CSS -->
     <!-- Custom -->
     <link rel="stylesheet" href="{% static 'css/dashboard/s2.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tokenize2.css' %}"
 </head>
 
 <body>
@@ -191,7 +193,8 @@
     </footer>
 
     <!-- JAVA SCRIPT -->
-
+    {% block script %}
+    {% endblock %}
     <script src="{% static 'js/dashboard/jquery.min.js' %}"></script>
     <script src="{% static 'js/dashboard/velocity.js' %}"></script>
     <script src="{% static 'js/dashboard/j1.js' %}"></script>

@@ -1,5 +1,7 @@
 from django.urls import path
+from django.conf.urls import url
 from . import views
+from accounts.models import UserDetail
 
 urlpatterns = [
 
@@ -8,4 +10,5 @@ urlpatterns = [
     path('private_dashboard/', views.private_dashboard,name="private_dashboard"),
     path('response/<str:id>/<str:a_id>/',views.response,name="response"),
     path('add/<str:id>/',views.add_answer,name="add_answer"),
+
 ]

@@ -43,8 +43,9 @@
                         <div class="create__section">
                             <label class="create__label" for="sub-category">Assignees</label>
                             <!-- <input type="text" name="assignees" value="abhi" data-role="tagsinput" id="assignees"></input> -->
-                            <select multiple name="assignees" data-role="tagsinput">
-                            </select>
+                            <!--<select multiple name="assignees" data-role="tagsinput">
+                            </select>-->
+                            {{form.assignees|add_class:"assignees" }}
                         </div>
                     </div>
                 </div>
@@ -72,9 +73,10 @@
                 </div>
                 <div class="create__section">
                     <label class="create__label" for="tags">Add Tags</label>
-                    <!-- <input type="text" name="tags" value="html,input,tag" data-role="tagsinput" id="tag"></input> -->
-                    <select multiple name="tags" data-role="tagsinput">
-                    </select>
+                    {{form.tags|add_class:"tags"}}
+                    <!--<input type="text" value="html,input,tag" data-role="tagsinput" id="tag"></input> 
+                    <!--<select multiple name="tags" class="selectTags" data-role="tagsinput">
+                    </select> -->
                 </div>
                 <div class="create__section">
                     <label class="create__label">Who can see this?</label>
@@ -97,5 +99,27 @@
         </div>
     </div>
 </main>
+
+{% endblock %}
+
+{% block script %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{% static 'js/tokenize2.js' %}"></script>
+    <script>
+        $('.tags').tokenize2({
+            placeholder: 'Add Tags',
+            sortable: true
+        });
+    </script>
+    <script>
+        $('.assignees').tokenize2({
+            placeholder: 'Add Assignees',
+            sortable: true
+        });
+    
+    </script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 {% endblock %}

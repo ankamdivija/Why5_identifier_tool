@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-
 from accounts.models import UserDetail
 from .models import Tag, Category, ProblemStatement, Answer
 from .forms import AddResponseForm, AddPostForm
+
 
 @login_required(login_url = 'login')
 def public_dashboard(request):
@@ -38,16 +38,18 @@ def private_dashboard(request):
 def create_post(request):
     user = UserDetail.objects.get(user=request.user)
     form = AddPostForm()
+    #print(form)
     if request.method=='POST':
+        print(request.POST)
+        print(request.POST.getlist('assignees'))
         form = AddPostForm({
             'csrfmiddlewaretoken': request.POST['csrfmiddlewaretoken'],
             'statement': request.POST['statement'],
             'category':Category.objects.get(id=request.POST['category']),
             'description': request.POST['description'],
             'createdBy': user,
-            'assignees': UserDetail.objects.all(),
-            # 'assignees': [UserDetail.objects.get(username=name) for name in request.POST.getlist('assignees')],
-            'tags':[Tag.objects.get(name=tag) for tag in request.POST.getlist('tags')],
+            'assignees': request.POST.getlist('assignees'),
+            'tags': request.POST.getlist('tags'),
             'status':'C',
             'count':0,
             'visibility':request.POST['visibility']
