@@ -11,8 +11,8 @@ class AddResponseForm(forms.ModelForm):
 
 class AddPostForm(forms.ModelForm):
     visibility = forms.ChoiceField(widget=forms.RadioSelect,choices=ProblemStatement.VISIBLITY_CHOICES)
-    assignees = forms.ModelMultipleChoiceField(queryset=UserDetail.objects.all())
-    #category = forms.ModelChoiceField(widget=forms.Select(attrs={"class": "category"}), queryset=Category.objects.all())
+    # assignees = forms.ModelMultipleChoiceField(queryset=UserDetail.objects.all())
+    # category = forms.ModelChoiceField(widget=forms.Select(attrs={"class": "category"}), queryset=Category.objects.all())
     class Meta:
         model = ProblemStatement
         fields = '__all__'

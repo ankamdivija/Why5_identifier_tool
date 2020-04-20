@@ -38,14 +38,14 @@ def private_dashboard(request):
 def create_post(request):
     user = UserDetail.objects.get(user=request.user)
     form = AddPostForm()
-    #print(form)
     if request.method=='POST':
         print(request.POST)
         print(request.POST.getlist('assignees'))
         form = AddPostForm({
             'csrfmiddlewaretoken': request.POST['csrfmiddlewaretoken'],
             'statement': request.POST['statement'],
-            'category':Category.objects.get(id=request.POST['category']),
+            # 'category':Category.objects.get(id=request.POST['category']),
+            'category': request.POST['category'],
             'description': request.POST['description'],
             'createdBy': user,
             'assignees': request.POST.getlist('assignees'),
@@ -55,7 +55,7 @@ def create_post(request):
             'visibility':request.POST['visibility']
         })
         if form.is_valid():
-            form.save()
+            # form.save()
             return redirect('public_dashboard')
     context = {
         'user' : user,
@@ -73,8 +73,10 @@ def response(request, id, a_id=1):
     if answers.count() != 0:
         node = answers.get(a_number=a_id)
         collect_answers(replies,node,statement)
+    print(replies)
     context = {
         'user' : user,
+        'a_number' : a_id,
         'statement': statement,
         'answers':answers,
         'replies':replies,

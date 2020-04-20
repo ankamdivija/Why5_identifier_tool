@@ -6,12 +6,34 @@
 <main>
     <div class="container">
         <div class="create">
-            <div class="create__head">
+            <div class="create__head m-0" style="border-bottom: 0px;">
                 <div class="create__title ">
-                    PS : {{ statement.statement }}</br>
-                Description : "{{statement.description}}"</div>
+                    PS : {{ statement.statement }}
+                </div>
+                <button type="button" class="create__btn-cansel btn" onclick="toggleInfo()">
+                    About PS
+                        <i class="fa fa-angle-down m-0 pl-2" onclick="toggleInfo()" aria-hidden="true"></i>
+                </button>
             </div>
-            <div class="d-flex flex-wrap ">
+            <div style="border-bottom: solid 1px #e9ecee;">
+                <div class="pb-4 mx-3" style="display: none;" id="info">
+                    <div class="container pb-3" style="font-weight: 600;">
+                        <p class="pt-3">Description : {{statement.description}}</p>
+                        <div class="pt-3 row">
+                            <div class="col border-right">
+                                Created by : {{statement.createdBy}}
+                            </div>
+                            <div class="col border-right">
+                                Category : {{statement.category.name}}
+                            </div>
+                            <div class="col">
+                                Status : {{statement.get_status_display}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap py-2">
                 {% for ans in answers %}
                 <div class="d-inline-flex shadow-sm m-3 p-3 border bd-highlight">
                     <div class="d-inline-flex mr-3 pr-2 border-right">A{{ ans.a_number }}</div>{{ ans.answer }}
@@ -28,31 +50,20 @@
             </div>
         </div>
         {% if answers.count != 0 %}
-        <nav aria-label="Page navigation example" class="text-center">
-            <ul class="pagination justify-content-center " style="margin: 15px;">
-                <li class="page-item" >
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                {% for ans in answers %}
-                <li class="page-item {% if ans.a_number == 1 %}active {% endif %}">
-                    <a class="page-link" href="{% url 'response' statement.id ans.a_number %}">{{ans.a_number}}</a></li>
-                {% endfor %}
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
         {% block answers %}
 
         {% endblock %}
         {% endif %}
+        <script>
+            function toggleInfo() {
+              var x = document.getElementById("info");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+            }
+            </script>
     </div>
 </main>
 {% endblock %}

@@ -1,11 +1,43 @@
 {% extends 'app/response.html' %}
 
 {% block answers %}
-<div class="create" style="margin: 0px;">
-    {% for reply in replies %}
-    <div class="shadow p-3 mb-5 bg-white rounded">{{reply.answer}}</div>
-    {% endfor %}
-    <div class="create__footer justify-content-center">
+<nav aria-label="Page navigation example" class="text-center">
+    <ul class="pagination justify-content-center " style="margin: 15px;">
+        <li class="page-item" >
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        {% for ans in answers %}
+        <li class="page-item {% if ans.a_number == 1 %} active {% endif %}">
+            <a class="page-link" href="{% url 'response' statement.id ans.a_number %}">{{ans.a_number}}</a>
+        </li>
+        {% endfor %}
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div class="create m-0 p-4">
+    <div class="create__title p-4 ">
+        Analysis Chain of A{{a_number}}:
+    </div>
+    <div class="p-4 rounded border " style="min-height: 500px;">
+        {% for reply in replies %}
+        <div class="shadow p-4 my-4 rounded">{{reply.answer}}
+            <div class="float-right border-left">
+                <i class="fa fa-user px-3 "></i>{{reply.givenBy}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="create__footer justify-content-center my-5">
         <a href="#" class="create__btn-success mx-2 btn">Root achieved</a>
         <a href="#" class="create__btn-create btn btn--type-02 shadow-sm ">Add response</a>
     </div>

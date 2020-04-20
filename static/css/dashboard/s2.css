@@ -726,6 +726,7 @@ select {
 .tags a:not(:last-child) {
   margin-right: 6px;
 }
+
 .category i {
   margin-right: 10px;
   margin-top: 10px;
@@ -734,6 +735,7 @@ select {
   width: 8px;
   height: 8px;
 }
+
 .avatar {
   position: relative;
   display: block;
@@ -2208,11 +2210,11 @@ select {
   display: -webkit-flex;
   display: flex;
 }
-@media only screen and (max-width: 1039px) {
+/* @media only screen and (max-width: 1039px) {
   .create__head {
     display: none;
   }
-}
+} */
 .create__head > span {
   margin-left: auto;
   color: #8e9091;
