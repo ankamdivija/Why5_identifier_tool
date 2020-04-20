@@ -2,7 +2,7 @@
 
 {% block answers %}
 <nav aria-label="Page navigation example" class="text-center">
-    <ul class="pagination justify-content-center " style="margin: 15px;">
+    <ul class="pagination justify-content-center " id="myTab" style="margin: 15px;">
         <li class="page-item" >
             <a class="page-link" href="#" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
@@ -10,7 +10,7 @@
             </a>
         </li>
         {% for ans in answers %}
-        <li class="page-item {% if ans.a_number == 1 %} active {% endif %}">
+        <li class="page-item">
             <a class="page-link" href="{% url 'response' statement.id ans.a_number %}">{{ans.a_number}}</a>
         </li>
         {% endfor %}
@@ -38,8 +38,21 @@
     </div>
     
     <div class="create__footer justify-content-center my-5">
-        <a href="#" class="create__btn-success mx-2 btn">Root achieved</a>
-        <a href="#" class="create__btn-create btn btn--type-02 shadow-sm ">Add response</a>
+        <a href="#" class="create__btn-success mx-2 btn" id="#root">Root achieved</a>
+        <a href="{% url 'add_sub_answer' statement.id a_number %}" class="create__btn-create btn btn--type-02 shadow-sm " id="#add_response">Add response</a>
     </div>
 </div>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<script>
+    $(document).ready(function() {
+        var v = window.location.pathname.split('/')[3];
+        console.log(v)
+        $("#myTab li").each(function() {
+            var href = $(this).children().first().text();
+            console.log(href)
+            if (href == v) $(this).addClass("active");
+            else $(this).removeClass("active");
+        });
+    });
+</script>
 {% endblock %}

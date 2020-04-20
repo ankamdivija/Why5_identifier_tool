@@ -26,11 +26,14 @@ def private_dashboard(request):
     tags = Tag.objects.all()
     categories = Category.objects.all()
     statements = UserDetail.objects.get(user=user).PS_createdby.all()
+    self_statements = statements.filter(visibility='O')
+    statements = statements.filter(visibility='E')
     context = {
         'user':user,
         'tags':tags,
         'categories':categories,
         'statements':statements,
+        'self_statements': self_statements,
     }
     return render(request,'app/private_dashboard.html',context)
 
@@ -44,7 +47,6 @@ def create_post(request):
         form = AddPostForm({
             'csrfmiddlewaretoken': request.POST['csrfmiddlewaretoken'],
             'statement': request.POST['statement'],
-            # 'category':Category.objects.get(id=request.POST['category']),
             'category': request.POST['category'],
             'description': request.POST['description'],
             'createdBy': user,
@@ -93,7 +95,7 @@ def add_answer(request,id):
             'csrfmiddlewaretoken': request.POST['csrfmiddlewaretoken'],
             'answer': request.POST['answer'],
             'statement':statement,
-            'givenBy': [user],
+            'givenBy': user,
             'a_parent': None,
             'a_number': statement.count+1
         })
@@ -108,8 +110,38 @@ def add_answer(request,id):
         'form' : form,
         'user' : user,
         'statement': statement,
+        'answer' : None,
     }
     return render(request,'app/add_response.html',context)
+
+
+@login_required(login_url = 'login')
+def add_sub_answer(request,id,a_id):
+    user = UserDetail.objects.get(user=request.user)
+    statement = ProblemStatement.objects.get(id=id)
+    answer = Answer.objects.filter(a_number=a_id)
+    answer = answer[answer.count()-1]
+    form = AddResponseForm()
+    if request.method == 'POST':
+        form = AddResponseForm({
+            'csrfmiddlewaretoken': request.POST['csrfmiddlewaretoken'],
+            'answer': request.POST['answer'],
+            'statement':statement,
+            'givenBy': user,
+            'a_parent': answer,
+            'a_number': answer.a_number
+        })
+        if form.is_valid():
+            form.save()
+            return redirect('../../../response/'+id+'/'+a_id)
+    context = {
+        'form' : form,
+        'user' : user,
+        'statement': statement,
+        'answer' : answer,
+    }
+    return render(request,'app/add_response.html',context)
+
 
 def collect_answers(replies,node,statement):
     replies.append(node)

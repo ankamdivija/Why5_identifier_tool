@@ -10,5 +10,6 @@ urlpatterns = [
     path('private_dashboard/', views.private_dashboard,name="private_dashboard"),
     path('response/<str:id>/<str:a_id>/',views.response,name="response"),
     path('add/<str:id>/',views.add_answer,name="add_answer"),
+    path('add/<str:id>/<str:a_id>/',views.add_sub_answer,name="add_sub_answer"),
 
 ]

@@ -1,16 +1,21 @@
-{% extends 'base/dashboard.html' %}
-
-{% load static %}
-{% block content %}
+{% extends 'base/dashboard.html' %} {% load static %} {% block content %}
 <main>
-    <div class="container">
-        <div class="nav">
-            <div class="nav__categories" style="right: 30px;">
+  <div class="container">
+    <!-- <h2>Dynamic Tabs</h2> -->
+    
+    <ul class="nav nav-tabs mt-5">
+      <li class="active">
+        <a data-toggle="tab" href="#home">Team</a>
+      </li>
+      <li><a data-toggle="tab" href="#menu1">Personal</a></li>
+      <li class="flex-end">
+        <div class="nav" style="border: none;">
+            <div class="nav__categories p-0">
                 <div class="nav__select">
                     <a class="btn" href="{% url 'create_post' %}">Post New Problem Statement</a>
                 </div>
             </div>
-            <div class="nav__categories js-dropdown">
+            <div class="nav__categories p-0 js-dropdown">
                 <div class="nav__select">
                     <div class="btn-select" data-dropdown-btn="categories">All Categories</div>
                     <nav class="dropdown dropdown--design-01" data-dropdown-list="categories">
@@ -34,43 +39,103 @@
                 </div>
             </div>
         </div>
-        <div class="posts">
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+        <div class="create mt-2">
+          <div class="create__head mb-0">
+            <div class="create__title">Posted for Team Analysis</div>
+          </div>
+          <div class="posts mx-4">
             <div class="posts__head">
+              <div class="posts__topic">Problem statement</div>
+              <div class="posts__category_p">Category</div>
+              <div class="posts__replies_p">Replies</div>
+              <div class="posts__activity_p">Status</div>
+            </div>
+            <div class="posts__body">
+              {% for prblm in statements %}
+              <div class="posts__item">
+                <div class="posts__section-left">
+                  <div class="posts__topic">
+                    <div class="posts__content">
+                      <a href="{% url 'response' prblm.id 1 %}">
+                        <h3>{{prblm.statement}}</h3>
+                      </a>
+                      <div class="posts__tags tags">
+                        {% for tag in prblm.tags.all %}
+                        <a href="#" class="{{ tag.color }}">{{tag.name}}</a>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="posts__category">
+                    <a href="#" class="category"
+                      ><i class="bg-368f8b"></i>
+                      {{prblm.category.name}}
+                    </a>
+                  </div>
+                </div>
+                <div class="posts__section-right">
+                  <div class="posts__replies_p">{{prblm.count}}</div>
+                  <div class="posts__activity_p">
+                    {{prblm.get_status_display}}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="menu1" class="tab-pane fade">
+        <div class="create mt-2">
+            <div class="create__head mb-0">
+              <div class="create__title">Poster for Self Analysis</div>
+            </div>
+            <div class="posts mx-4">
+              <div class="posts__head">
                 <div class="posts__topic">Problem statement</div>
                 <div class="posts__category_p">Category</div>
                 <div class="posts__replies_p">Replies</div>
                 <div class="posts__activity_p">Status</div>
-            </div>
-            <div class="posts__body">
-                {% for prblm in statements %}
+              </div>
+              <div class="posts__body">
+                {% for prblm in self_statements %}
                 <div class="posts__item">
-                    <div class="posts__section-left">
-                        <div class="posts__topic">
-                            <div class="posts__content">
-                                <a href="{% url 'response' prblm.id 1 %}">
-                                    <h3>{{prblm.statement}}</h3>
-                                </a>
-                                <div class="posts__tags tags">
-                                    {% for tag in prblm.tags.all %}
-                                    <a href="#" class="{{ tag.color }}">{{tag.name}}</a>
-                                    {% endfor %}
-                                </div>
-                            </div>
+                  <div class="posts__section-left">
+                    <div class="posts__topic">
+                      <div class="posts__content">
+                        <a href="{% url 'response' prblm.id 1 %}">
+                          <h3>{{prblm.statement}}</h3>
+                        </a>
+                        <div class="posts__tags tags">
+                          {% for tag in prblm.tags.all %}
+                          <a href="#" class="{{ tag.color }}">{{tag.name}}</a>
+                          {% endfor %}
                         </div>
-                        <div class="posts__category"><a href="#" class="category"><i
-                            class="bg-368f8b"></i>
-                            {{prblm.category.name}}
-                        </a></div>
+                      </div>
                     </div>
-                    <div class="posts__section-right">
-                        <div class="posts__replies_p">{{prblm.count}}</div>
-                        <div class="posts__activity_p">{{prblm.get_status_display}}</div>
+                    <div class="posts__category">
+                      <a href="#" class="category"
+                        ><i class="bg-368f8b"></i>
+                        {{prblm.category.name}}
+                      </a>
                     </div>
+                  </div>
+                  <div class="posts__section-right">
+                    <div class="posts__replies_p">{{prblm.count}}</div>
+                    <div class="posts__activity_p">{{prblm.get_status_display}}</div>
+                  </div>
                 </div>
                 {% endfor %}
-                
+              </div>
             </div>
-        </div>
+          </div>
+      </div>
     </div>
+  </div>
 </main>
 {% endblock %}

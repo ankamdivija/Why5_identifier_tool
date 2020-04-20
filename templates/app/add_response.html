@@ -6,12 +6,32 @@
 <main>
     <div class="container">
         <div class="create">
-            <div class="create__head">
+            <div class="create__head m-0" style="border-bottom: 0px;">
                 <div class="create__title">
-                    <!-- <img src="{% static 'img/add-icon.png' %}" alt="New topic"> -->
                     Add new response for " {{statement.statement}} "
                 </div>
-                <a href="#" class="create__btn-cansel btn">About PS</a>
+                <button type="button" class="create__btn-cansel btn" onclick="toggleInfo()">
+                    About PS
+                        <i class="fa fa-angle-down m-0 pl-2" onclick="toggleInfo()" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div style="border-bottom: solid 1px #e9ecee;">
+                <div class="pb-4 mx-3" style="display: none;" id="info">
+                    <div class="container pb-3" style="font-weight: 600;">
+                        <p class="pt-3">Description : {{statement.description}}</p>
+                        <div class="pt-3 row">
+                            <div class="col border-right">
+                                Created by : {{statement.createdBy}}
+                            </div>
+                            <div class="col border-right">
+                                Category : {{statement.category.name}}
+                            </div>
+                            <div class="col">
+                                Status : {{statement.get_status_display}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <form action="" method="POST">
             {% csrf_token %}
@@ -26,8 +46,12 @@
                 {{ error|escape }}
             {% endfor %}
             {% endif %}
-            <div class="create__section">
-                <label class="create__label" for="title">New Response</label>
+            <div class="create__section my-4">
+                <label class="create__label mb-3" for="title">New Response
+                    {% if answer is not None %}
+                    in the view of "{{answer.answer}}" :
+                    {% endif %}
+                </label>
                 <textarea class="form-control" name="answer" id="answer" placeholder="Add here"></textarea>
             </div>
             <div class="create__footer">
