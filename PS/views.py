@@ -57,7 +57,7 @@ def create_post(request):
             'visibility':request.POST['visibility']
         })
         if form.is_valid():
-            # form.save()
+            form.save()
             return redirect('public_dashboard')
     context = {
         'user' : user,
