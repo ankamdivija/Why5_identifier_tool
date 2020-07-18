@@ -1,0 +1,33 @@
+<div class="nav__categories p-0">
+  <div class="nav__select">
+    <a class="btn" href="{% url 'create_post' %}">Post New Problem Statement</a>
+  </div>
+</div>
+<div class="nav__categories p-0 js-dropdown">
+  <div class="nav__select">
+    <div class="btn-select" data-dropdown-btn="categories">
+      All Categories
+    </div>
+    <nav class="dropdown dropdown--design-01" data-dropdown-list="categories">
+      <ul class="dropdown__catalog row">
+        <li class="col-xs-6"><a href="{% url 'private_dashboard' %}" class="category"><i class="bg-6eebe"></i>All categories</a>
+        </li>
+        {% for category in categories %}
+        <li class="col-xs-6"><a href="{% url 'category_filter' category.name %}" class="category"><i class="{{category.color}}"></i>{{category.name}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+  <div class="nav__select">
+    <div class="btn-select" data-dropdown-btn="tags">Tags</div>
+    <div class="dropdown dropdown--design-01" data-dropdown-list="tags">
+      <div class="tags">
+        <a href="{% url 'private_dashboard' %}" class="bg-368f8b">all</a>
+        {% for tag in tags %}
+        <a href="{% url 'tag_filter' tag.name %}" class="{{ tag.color }}">{{tag.name}}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

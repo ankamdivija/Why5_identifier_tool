@@ -426,9 +426,27 @@ select {
   margin-left: 4px;
   margin-right: 4px;
 }
+
+
+.btn--success {
+  background-color: green;
+}
+
+.btn--success,
+.btn--success:visited,
+.btn--success:active,
+.btn--success:link {
+  color: #ffffff;
+}
+.btn--success i {
+  margin-right: 15px;
+  color: #ffffff;
+}
+
 .btn--type-02 {
   background-color: #f9bc64;
 }
+
 .btn--type-02,
 .btn--type-02:visited,
 .btn--type-02:active,
@@ -438,6 +456,10 @@ select {
 .btn--type-02 i {
   margin-right: 15px;
   color: #ffffff;
+}
+
+.root_note {
+  background-color: lightgoldenrodyellow;
 }
 .btn-select {
   position: relative;

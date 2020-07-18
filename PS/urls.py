@@ -11,5 +11,8 @@ urlpatterns = [
     path('response/<str:id>/<str:a_id>/',views.response,name="response"),
     path('add/<str:id>/',views.add_answer,name="add_answer"),
     path('add/<str:id>/<str:a_id>/',views.add_sub_answer,name="add_sub_answer"),
+    path('root/<str:id>/<str:a_id>/',views.root_achieved,name="root_achieved"),
+    path('public_dashboard/category=<str:name>',views.category_filter,name="category_filter"),
+    path('public_dashboard/tag=<str:name>',views.tag_filter,name="tag_filter"),
 
 ]

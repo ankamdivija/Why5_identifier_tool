@@ -1,0 +1,6 @@
+Get inside the virtual environment first (go to its location)
+
+source env/bin/activate
+
+(go to the project folder)start ther server
+python manage.py runserver

@@ -29,7 +29,7 @@
     </div>
     <div class="p-4 rounded border " style="min-height: 500px;">
         {% for reply in replies %}
-        <div class="shadow p-4 my-4 rounded">{{reply.answer}}
+        <div class="shadow p-4 my-4 rounded {% if reply in root %}root_note{% endif %}">{{reply.answer}}
             <div class="float-right border-left">
                 <i class="fa fa-user px-3 "></i>{{reply.givenBy}}
             </div>
@@ -38,18 +38,21 @@
     </div>
     
     <div class="create__footer justify-content-center my-5">
-        <a href="#" class="create__btn-success mx-2 btn" id="#root">Root achieved</a>
-        <a href="{% url 'add_sub_answer' statement.id a_number %}" class="create__btn-create btn btn--type-02 shadow-sm " id="#add_response">Add response</a>
+        {% if statement.createdBy == userDetail or statement.status == 'F' %}
+        <a href="{% url 'root_achieved' statement.id a_number %}" 
+        class="create__btn-create mx-2 btn {% if statement.status == 'F' %}btn--success{% endif %}" id="root">Root achieved</a>
+        {% endif %}
+        {% if statement.status != 'F' %}
+        <a href="{% url 'add_sub_answer' statement.id a_number %}" class="create__btn-create btn btn--type-02 shadow-sm " id="add_response">Add response</a>
+        {% endif %}
     </div>
 </div>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-<script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" >
     $(document).ready(function() {
         var v = window.location.pathname.split('/')[3];
-        console.log(v)
         $("#myTab li").each(function() {
             var href = $(this).children().first().text();
-            console.log(href)
             if (href == v) $(this).addClass("active");
             else $(this).removeClass("active");
         });

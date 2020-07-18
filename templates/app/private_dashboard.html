@@ -1,52 +1,21 @@
 {% extends 'base/dashboard.html' %} {% load static %} {% block content %}
 <main>
   <div class="container">
-    <!-- <h2>Dynamic Tabs</h2> -->
-    
     <ul class="nav nav-tabs mt-5">
       <li class="active">
         <a data-toggle="tab" href="#home">Team</a>
       </li>
       <li><a data-toggle="tab" href="#menu1">Personal</a></li>
-      <li class="flex-end">
-        <div class="nav" style="border: none;">
-            <div class="nav__categories p-0">
-                <div class="nav__select">
-                    <a class="btn" href="{% url 'create_post' %}">Post New Problem Statement</a>
-                </div>
-            </div>
-            <div class="nav__categories p-0 js-dropdown">
-                <div class="nav__select">
-                    <div class="btn-select" data-dropdown-btn="categories">All Categories</div>
-                    <nav class="dropdown dropdown--design-01" data-dropdown-list="categories">
-                        <ul class="dropdown__catalog row">
-                            {% for category in categories %}
-                            <li class="col-xs-6"><a href="#" class="category"><i class="{{category.color}}"></i>{{category.name}}</a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </nav>
-                </div>
-                <div class="nav__select">
-                    <div class="btn-select" data-dropdown-btn="tags">Tags</div>
-                    <div class="dropdown dropdown--design-01" data-dropdown-list="tags">
-                        <div class="tags">
-                            {% for tag in tags %}
-                            <a href="#" class="{{ tag.color }}">{{tag.name}}</a>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </li>
     </ul>
 
-    <div class="tab-content">
-      <div id="home" class="tab-pane fade in active">
-        <div class="create mt-2">
-          <div class="create__head mb-0">
+    <div class="tab-content" >
+      <div id="home" class="tab-pane fade in active" >
+        <div class="create mt-2" style="min-height: 500px;">
+          <div class="create__head mb-0 justify-content-between">
             <div class="create__title">Posted for Team Analysis</div>
+            <div class="create__title nav pl-2" style="border: none;">
+                {% include "app/filter_tabs.html" %}
+          </div>
           </div>
           <div class="posts mx-4">
             <div class="posts__head">
@@ -91,10 +60,13 @@
         </div>
       </div>
       <div id="menu1" class="tab-pane fade">
-        <div class="create mt-2">
-            <div class="create__head mb-0">
-              <div class="create__title">Poster for Self Analysis</div>
-            </div>
+        <div class="create mt-2" style="min-height: 500px;">
+          <div class="create__head mb-0 justify-content-between">
+            <div class="create__title">Posted for Self Analysis</div>
+            <div class="create__title nav pl-2" style="border: none;">
+              {% include 'app/filter_tabs.html' %}
+          </div>
+          </div>
             <div class="posts mx-4">
               <div class="posts__head">
                 <div class="posts__topic">Problem statement</div>
